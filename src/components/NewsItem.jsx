@@ -24,7 +24,11 @@ export default class NewsItem extends Component {
             <div>{title}</div>
             <div>
               <span>{content}</span>
-              <span>Read More</span>
+              <span>
+                <a target="blank" href={url}>
+                  Read More
+                </a>
+              </span>
             </div>
             <div>
               <span>

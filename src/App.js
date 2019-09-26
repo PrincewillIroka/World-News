@@ -5,6 +5,8 @@ import Sidebar from './components/Sidebar'
 import MainLayout from './components/MainLayout'
 import styled from 'styled-components'
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import store from './store'
+import { Provider } from 'react-redux'
 
 export default class App extends Component {
   state = {
@@ -13,21 +15,23 @@ export default class App extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <div className="App">
-          <div className="header">
-            <Header />
-          </div>
-          <div>
-            <div className="sidebar">
-              <Sidebar />
+      <Provider store={store}>
+        <Wrapper>
+          <div className="App">
+            <div className="header">
+              <Header />
             </div>
-            <div className="mainlayout">
-              <MainLayout />
+            <div>
+              <div className="sidebar">
+                <Sidebar />
+              </div>
+              <div className="mainlayout">
+                <MainLayout />
+              </div>
             </div>
           </div>
-        </div>
-      </Wrapper>
+        </Wrapper>
+      </Provider>
     )
   }
 }

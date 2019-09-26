@@ -2,20 +2,31 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import axios from 'axios'
 import NewsItem from './NewsItem'
+import { connect } from 'react-redux'
 
-export default class MainLayout extends Component {
+class MainLayout extends Component {
   state = {
-    activeTabNews: [],
+    activeNewsSource: [],
     newsSource: 'bbc-sport'
   }
 
   componentWillMount() {
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?sources=${this.state.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
       )
       .then(res => {
-        this.setState({ activeTabNews: res.data.articles })
+        this.setState({ activeNewsSource: res.data.articles })
+      })
+  }
+
+  componentDidUpdate() {
+    axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+      )
+      .then(res => {
+        this.setState({ activeNewsSource: res.data.articles })
       })
   }
 
@@ -23,11 +34,11 @@ export default class MainLayout extends Component {
     return (
       <Wrapper>
         <div className="mainlayoutContainer">
-          {this.state.activeTabNews.length === 0 ? (
+          {this.state.activeNewsSource.length === 0 ? (
             <Spinner />
           ) : (
             <div className="realContainer">
-              <ANewsItem activeTabNews={this.state} />
+              <ANewsItem activeNewsSource={this.state} />
             </div>
           )}
         </div>
@@ -36,10 +47,20 @@ export default class MainLayout extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    newsSource: state.newsSource
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainLayout)
+
 const ANewsItem = state => {
-  const { activeTabNews } = state.activeTabNews
-  // console.log(activeTabNews)
-  return activeTabNews.map((newsData, index) => (
+  const { activeNewsSource } = state.activeNewsSource
+  return activeNewsSource.map((newsData, index) => (
     <NewsItem key={index} newsData={newsData} />
   ))
 }
