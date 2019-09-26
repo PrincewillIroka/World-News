@@ -20,7 +20,7 @@ export default class Header extends Component {
             <span>
               <span>Developed by</span>
               <span>
-                <a href="http://princewilliroka.co.nf"> Princewill Iroka</a>
+                <a href="https://princewill-iroka.netlify.com/"> Princewill Iroka</a>
               </span>
             </span>
           </span>
