@@ -5,36 +5,46 @@ import Sidebar from './components/Sidebar'
 import MainLayout from './components/MainLayout'
 import styled from 'styled-components'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import store from './store'
-import { Provider } from 'react-redux'
+import { connect } from 'react-redux'
 
-export default class App extends Component {
-  state = {
-    activeTab: ''
-  }
-
+class App extends Component {
   render() {
     return (
-      <Provider store={store}>
-        <Wrapper>
-          <div className="App">
-            <div className="header">
-              <Header />
+      <Wrapper>
+        <div className="App">
+          <div className="header">
+            <Header />
+          </div>
+          <div>
+            <div
+              className={`sidebar ${
+                this.props.currentHamburgerIconState ? 'hidden' : ''
+              }`}
+            >
+              <Sidebar />
             </div>
-            <div>
-              <div className="sidebar">
-                <Sidebar />
-              </div>
-              <div className="mainlayout">
-                <MainLayout />
-              </div>
+            <div
+              className={`mainlayout ${
+                this.props.currentHamburgerIconState ? 'expanded' : ''
+              }`}
+            >
+              <MainLayout />
             </div>
           </div>
-        </Wrapper>
-      </Provider>
+        </div>
+      </Wrapper>
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    currentHamburgerIconState:
+      state.hamburgerIconReducer.currentHamburgerIconState
+  }
+}
+
+export default connect(mapStateToProps)(App)
 
 const Wrapper = styled.div`
   .App {
@@ -66,6 +76,14 @@ const Wrapper = styled.div`
         width: 80%;
         margin-top: 80px;
         height: calc(100vh - 80px);
+      }
+
+      > .hidden {
+        display: none;
+      }
+
+      > .expanded {
+        width: 100%;
       }
     }
   }

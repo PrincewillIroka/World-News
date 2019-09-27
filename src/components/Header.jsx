@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { connect } from 'react-redux'
+import { handleHamburgerIconState } from '../store/actions'
 
-export default class Header extends Component {
+class Header extends Component {
   handleHamburgerIconClick() {
-    console.log('legacy')
+    this.props.handleHamburgerIconClick(!this.props.currentHamburgerIconState)
   }
 
   render() {
@@ -12,7 +14,7 @@ export default class Header extends Component {
         <div className="header">
           <span>
             <i
-              onClick={this.handleHamburgerIconClick}
+              onClick={this.handleHamburgerIconClick.bind(this)}
               className="fas fa-bars"
             ></i>
           </span>
@@ -38,6 +40,26 @@ export default class Header extends Component {
     )
   }
 }
+
+const mapStateToProps = state => {
+  return {
+    currentHamburgerIconState:
+      state.hamburgerIconReducer.currentHamburgerIconState
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleHamburgerIconClick: currentHamburgerIconState => {
+      dispatch(handleHamburgerIconState(currentHamburgerIconState))
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Header)
 
 const Wrapper = styled.div`
   .header {
