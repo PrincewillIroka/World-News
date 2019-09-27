@@ -248,7 +248,7 @@ class Sidebar extends Component {
 
 const mapStateToProps = state => {
   return {
-    newsSource: state.newsSource
+    newsSource: state.newsSourceReducer.newsSource
   }
 }
 

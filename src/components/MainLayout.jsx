@@ -6,8 +6,7 @@ import { connect } from 'react-redux'
 
 class MainLayout extends Component {
   state = {
-    activeNewsSource: [],
-    newsSource: 'bbc-sport'
+    activeNewsSource: []
   }
 
   componentWillMount() {
@@ -49,7 +48,7 @@ class MainLayout extends Component {
 
 const mapStateToProps = state => {
   return {
-    newsSource: state.newsSource
+    newsSource: state.newsSourceReducer.newsSource
   }
 }
 
@@ -66,7 +65,7 @@ const ANewsItem = state => {
 }
 
 const Spinner = () => {
-  return <div>Spinner</div>
+  return <div className="spinnerLayout"></div>
 }
 
 const Wrapper = styled.div`
@@ -88,6 +87,10 @@ const Wrapper = styled.div`
             0 2px 7px 0 rgba(72, 22, 66, 0.1);
         }
       }
+    }
+    .spinnerLayout {
+      height: 480px;
+      border: 1px solid maroon;
     }
   }
 `

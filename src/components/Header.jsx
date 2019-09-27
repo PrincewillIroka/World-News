@@ -2,12 +2,19 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 export default class Header extends Component {
+  handleHamburgerIconClick() {
+    console.log('legacy')
+  }
+
   render() {
     return (
       <Wrapper>
         <div className="header">
           <span>
-            <i className="fas fa-bars"></i>
+            <i
+              onClick={this.handleHamburgerIconClick}
+              className="fas fa-bars"
+            ></i>
           </span>
           <span>WorldNews App</span>
           <span>
@@ -20,7 +27,9 @@ export default class Header extends Component {
             <span>
               <span>Developed by</span>
               <span>
-                <a href="https://princewill-iroka.netlify.com/"> Princewill Iroka</a>
+                <a href="https://princewill-iroka.netlify.com/">
+                  Princewill Iroka
+                </a>
               </span>
             </span>
           </span>
@@ -60,8 +69,8 @@ const Wrapper = styled.div`
         align-items: center;
         justify-content: center;
         padding: 5px 20px;
-        ${'' /* border: 1px solid #fff;
-        border-radius: 20px; */}
+        border: 1px solid #fff;
+        border-radius: 20px;
         margin-right: 50px;
 
         > span:nth-child(2) {

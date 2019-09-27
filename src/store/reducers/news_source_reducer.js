@@ -1,8 +1,7 @@
 import * as Actions from '../actions'
 
 const initialState = {
-  newsSource: 'abc-news',
-  activeNewsData: []
+  newsSource: 'abc-news'
 }
 
 const newsSourceReducer = (state = initialState, action) => {
