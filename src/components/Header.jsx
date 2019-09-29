@@ -29,7 +29,7 @@ class Header extends Component {
             <span>
               <span>Developed by</span>
               <span>
-                <a href="https://princewill-iroka.netlify.com/">
+                <a target="_blank" href="https://princewilliroka.com/">
                   Princewill Iroka
                 </a>
               </span>

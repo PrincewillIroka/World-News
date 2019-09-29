@@ -70,6 +70,12 @@ const Wrapper = styled.div`
         width: 20%;
         margin-top: 80px;
         height: calc(100vh - 80px);
+        -webkit-animation: conditionalOpen 1s normal forwards ease-in-out;
+        -moz-animation: conditionalOpen 1s normal forwards ease-in-out;
+        animation: conditionalOpen 1s normal forwards ease-in-out;
+        -webkit-transform-origin: 50% 0%;
+        -moz-transform-origin: 50% 0%;
+        transform-origin: 50% 0%;
       }
 
       > .mainlayout {
