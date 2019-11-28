@@ -110,7 +110,7 @@ const Wrapper = styled.div`
         }
         > span:nth-child(2) {
           font-size: 14px;
-          color: blue;
+          color: #000;
           font-weight: bold;
         }
       }

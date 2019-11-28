@@ -1,66 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
 import NewsItem from './NewsItem'
 import { connect } from 'react-redux'
 
-class MainLayout extends Component {
-  state = {
-    activeNewsSource: [],
-    newsSource: this.props.newsSource
-  }
-
-  componentWillMount() {
-    axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
-      )
-      .then(res => {
-        this.setState({ activeNewsSource: res.data.articles })
-      })
-  }
-
-  componentDidUpdate() {
-    axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
-      )
-      .then(res => {
-        this.setState({ activeNewsSource: res.data.articles })
-      })
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <div className="mainlayoutContainer">
-          {this.state.activeNewsSource.length === 0 ? (
-            <Spinner />
-          ) : (
-            <div className="realContainer">
-              <ANewsItem activeNewsSource={this.state} />
-            </div>
-          )}
-        </div>
-      </Wrapper>
-    )
-  }
-}
-
-const mapStateToProps = state => {
-  return {
-    newsSource: state.newsSourceReducer.newsSource
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  null
-)(MainLayout)
-
-const ANewsItem = state => {
-  const { activeNewsSource } = state.activeNewsSource
-  return activeNewsSource.map((newsData, index) => (
+const ANewsItem = obj => {
+  return obj.activeNewsSource.map((newsData, index) => (
     <NewsItem key={index} newsData={newsData} />
   ))
 }
@@ -76,6 +20,40 @@ const Spinner = () => {
     </div>
   )
 }
+
+class MainLayout extends Component {
+  render() {
+    return (
+      <Wrapper>
+        <div className="mainlayoutContainer">
+          {this.props.isLoading ? (
+            <Spinner />
+          ) : this.props.activeNewsSource.length > 0 ? (
+            <div className="realContainer">
+              <ANewsItem activeNewsSource={this.props.activeNewsSource} />
+            </div>
+          ) : (
+                <div className="emptyContainer">
+                  <span>None Found</span>
+                </div>
+              )}
+        </div>
+      </Wrapper>
+    )
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    isLoading: state.newsSourceReducer.isLoading,
+    activeNewsSource: state.newsSourceReducer.activeNewsSource
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  null
+)(MainLayout)
 
 const Wrapper = styled.div`
   .mainlayoutContainer {
@@ -153,5 +131,16 @@ const Wrapper = styled.div`
         }
       }
     }
+
+    .emptyContainer{
+      height: 480px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: bold;
+      color: #1ebea5;
+    }
+
   }
 `

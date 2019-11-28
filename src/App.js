@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import db from './assets/db/data.json'
 import './App.css'
 import Header from './components/Header'
 import Sidebar from './components/Sidebar'
@@ -6,8 +7,14 @@ import MainLayout from './components/MainLayout'
 import styled from 'styled-components'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { connect } from 'react-redux'
+import { populateTabData } from './store/actions'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.handlePopulateTabData(db.newsoutlets)
+  }
+
   render() {
     return (
       <Wrapper>
@@ -19,14 +26,14 @@ class App extends Component {
             <div
               className={`sidebar ${
                 this.props.currentHamburgerIconState ? 'hidden' : ''
-              }`}
+                }`}
             >
               <Sidebar />
             </div>
             <div
               className={`mainlayout ${
                 this.props.currentHamburgerIconState ? 'expanded' : ''
-              }`}
+                }`}
             >
               <MainLayout />
             </div>
@@ -44,7 +51,18 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = dispatch => {
+  return {
+    handlePopulateTabData: data => {
+      dispatch(populateTabData(data))
+    }
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
 
 const Wrapper = styled.div`
   .App {

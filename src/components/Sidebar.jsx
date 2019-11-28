@@ -1,246 +1,84 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { connect } from 'react-redux'
-import { handleNewsSource } from '../store/actions'
-import abcnewslogo from '../assets/logos/abcnews_pearl_stacked.png'
-import aljazeeralogo from '../assets/logos/aljazeraenglish.jpg'
-import associatedpresslogo from '../assets/logos/Associated-Press.jpg'
-import bbcnewslogo from '../assets/logos/bbcnews.png'
-import bbcsportslogo from '../assets/logos/bbcsports.png'
-import bloomberglogo from '../assets/logos/BLOOMBERGcorp-logo.jpg'
-import dailymaillogo from '../assets/logos/daily_mail.jpg'
-import eweeklylogo from '../assets/logos/e_weekly.jpg'
-import espnlogo from '../assets/logos/espn_logo.png'
-import financialpostlogo from '../assets/logos/financialpost.png'
-import footballitalialogo from '../assets/logos/football_Italia.png'
-import fourfourtwologo from '../assets/logos/FourFourTwo.jpg'
-import foxchannellogo from '../assets/logos/fox_channel.jpg'
+import axios from 'axios'
+import {
+  handleNewsSource, handleIsLoading,
+  handleActiveNewsSource, searchTabData
+} from '../store/actions'
 
 class Sidebar extends Component {
-  changeNewsSource = newsSource => {
-    this.props.changeNewsSource(newsSource)
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      searchText: ''
+    }
+  }
+
+  componentDidMount() {
+    axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+      )
+      .then(res => {
+        this.props.changeIsLoading(false)
+        this.props.changeActiveNewsSource(res.data.articles)
+      })
+  }
+
+  changeNewsSource = async newsSource => {
+    await this.props.changeNewsSource(newsSource)
+    await this.props.changeIsLoading(true)
+    axios
+      .get(
+        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+      )
+      .then(res => {
+        this.props.changeIsLoading(false)
+        this.props.changeActiveNewsSource(res.data.articles)
+      })
+  }
+
+  handleSearch = async event => {
+    await this.setState({
+      searchText: event.target.value.toLowerCase()
+    })
+    this.props.searchTabData(this.state.searchText)
   }
 
   render() {
     return (
       <Wrapper>
         <div className="sidebarContainer">
-          <div>
-            <div
-              className={`${
-                this.props.newsSource === 'abc-news' ? 'activeNewsSource' : ''
-              }`}
-              onClick={e => this.changeNewsSource('abc-news')}
-            >
-              <img src={abcnewslogo} alt="ABC News" />
-              <span>ABC News</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'al-jazeera-english'
-                  ? 'activeNewsSource'
-                  : ''
-              }`}
-              onClick={e => this.changeNewsSource('al-jazeera-english')}
-            >
-              <img src={aljazeeralogo} alt="AlJazeera" />
-              <span>AlJazeera English</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'associated-press'
-                  ? 'activeNewsSource'
-                  : ''
-              }`}
-              onClick={e => this.changeNewsSource('associated-press')}
-            >
-              <img src={associatedpresslogo} alt="Associated Press" />
-              <span>Associated Press</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'bbc-news' ? 'activeNewsSource' : ''
-              }`}
-              onClick={e => this.changeNewsSource('bbc-news')}
-            >
-              <img src={bbcnewslogo} alt="BBC News" />
-              <span>BBC News</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'bbc-sport' ? 'activeNewsSource' : ''
-              }`}
-              onClick={e => this.changeNewsSource('bbc-sport')}
-            >
-              <img src={bbcsportslogo} alt="BBC Sports" />
-              <span>BBC Sports</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'bloomberg' ? 'activeNewsSource' : ''
-              }`}
-              onClick={e => this.changeNewsSource('bloomberg')}
-            >
-              <img src={bloomberglogo} alt="Bloomberg" />
-              <span>Bloomberg</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'daily-mail' ? 'activeNewsSource' : ''
-              }`}
-              onClick={e => this.changeNewsSource('daily-mail')}
-            >
-              <img src={dailymaillogo} alt="Daily Mail" />
-              <span>Daily Mail</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'entertainment-weekly'
-                  ? 'activeNewsSource'
-                  : ''
-              }`}
-              onClick={e => this.changeNewsSource('entertainment-weekly')}
-            >
-              <img src={eweeklylogo} alt="E-Weekly" />
-              <span>Entertainment Weekly</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'espn' ? 'activeNewsSource' : ''
-              }`}
-              onClick={e => this.changeNewsSource('espn')}
-            >
-              <img src={espnlogo} alt="ESPN" />
-              <span>ESPN</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'financial-post'
-                  ? 'activeNewsSource'
-                  : ''
-              }`}
-              onClick={e => this.changeNewsSource('financial-post')}
-            >
-              <img src={financialpostlogo} alt="Financial Post" />
-              <span>Financial Post</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'football-italia'
-                  ? 'activeNewsSource'
-                  : ''
-              }`}
-              onClick={e => this.changeNewsSource('football-italia')}
-            >
-              <img src={footballitalialogo} alt="Football Italia" />
-              <span>Football Italia</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'four-four-two'
-                  ? 'activeNewsSource'
-                  : ''
-              }`}
-              onClick={e => this.changeNewsSource('four-four-two')}
-            >
-              <img src={fourfourtwologo} alt="Four Four Two" />
-              <span>Four Four Two</span>
-            </div>
-            <div
-              className={`${
-                this.props.newsSource === 'fox-news' ? 'activeNewsSource' : ''
-              }`}
-              onClick={e => this.changeNewsSource('fox-news')}
-            >
-              <img src={foxchannellogo} alt="Fox News" />
-              <span>Fox News</span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
-            </div>
-            <div>
-              <img src="" alt="" />
-              <span></span>
+          <div className="searchContainer">
+            <div className="searchContainer2">
+              <input type="text" value={this.state.searchText} placeholder="Search"
+                onChange={this.handleSearch} className="searchField" />
+              <i className="fas fa-search searchIcon"></i>
             </div>
           </div>
+          <div className="tabsParentContainer">
+            <div className="tabsContainer">
+              {
+                this.props.tabData.map(dt => {
+                  return <div
+                    key={dt.name}
+                    className={`${
+                      this.props.newsSource === dt.name ? 'activeNewsSource' : ''
+                      }`}
+                    onClick={e => this.changeNewsSource(dt.name)}
+                  >
+                    <img src={require('../assets/logos/' + dt.image + '.png')} alt="" />
+                    <span>{dt.title}</span>
+                  </div>
+                })
+              }
+            </div>
+          </div>
+
         </div>
+
       </Wrapper>
     )
   }
@@ -248,7 +86,8 @@ class Sidebar extends Component {
 
 const mapStateToProps = state => {
   return {
-    newsSource: state.newsSourceReducer.newsSource
+    newsSource: state.newsSourceReducer.newsSource,
+    tabData: state.newsSourceReducer.tabData
   }
 }
 
@@ -256,6 +95,15 @@ const mapDispatchToProps = dispatch => {
   return {
     changeNewsSource: newsSource => {
       dispatch(handleNewsSource(newsSource))
+    },
+    changeIsLoading: (isLoading) => {
+      dispatch(handleIsLoading(isLoading))
+    },
+    changeActiveNewsSource: (activeNewsSource) => {
+      dispatch(handleActiveNewsSource(activeNewsSource))
+    },
+    searchTabData: (value) => {
+      dispatch(searchTabData(value))
     }
   }
 }
@@ -267,22 +115,52 @@ export default connect(
 
 const Wrapper = styled.div`
   .sidebarContainer {
-    height: 100%;
     width: 20%;
     position: fixed;
     background-color: #f4f4f4;
-    overflow-y: hidden;
 
-    &:hover {
-      overflow-y: scroll;
+    >.searchContainer{      
+      padding: 20px 5%;
+
+      >.searchContainer2{
+        height: 35px;
+        background-color: #fff;
+        border-radius: 3px;
+        display:flex;
+        padding: 0 10px;
+        box-shadow: 0 7px 17px rgba(0,0,0,0.19), 0 3px 3px rgba(0,0,0,0.23);
+
+        >.searchField{
+          border: none;
+          outline:none;
+          width: 100%;
+          font-size: 16px;
+        }
+
+        >.searchIcon{
+          align-self:center;
+          color: #ccc;
+        }
+
+      }
     }
 
-    > div:nth-child(1) {
+    >.tabsParentContainer{
+      height: 100vh;
+      overflow-y: hidden;
+      padding-bottom: 200px;
+
+      &:hover {
+        overflow-y: scroll;
+      }
+
+      > .tabsContainer {
       display: grid;
       grid-template-columns: repeat(1, 100% [col-start]);
 
+    
       > div:nth-child(1) {
-        margin-top: 30px;
+        margin-top: 10px;
       }
 
       > div:last-child {
@@ -311,8 +189,12 @@ const Wrapper = styled.div`
       }
 
       > .activeNewsSource {
-        border-right: 3px solid #1ebea5;
+        border-right: 5px solid #1ebea5;
       }
     }
+
+
+    }
+
   }
 `

@@ -1,0 +1,224 @@
+{
+    "newsoutlets": [
+        {
+            "name": "abc-news",
+            "title": "ABC News",
+            "image": "abcnews_pearl_stacked"
+        },
+        {
+            "name": "al-jazeera-english",
+            "title": "AlJazeera English",
+            "image": "aljazeraenglish"
+        },
+        {
+            "name": "associated-press",
+            "title": "Associated Press",
+            "image": "Associated-Press"
+        },
+        {
+            "name": "bbc-news",
+            "title": "BBC News",
+            "image": "bbcnews"
+        },
+        {
+            "name": "bbc-sport",
+            "title": "BBC Sports",
+            "image": "bbcsports"
+        },
+        {
+            "name": "bloomberg",
+            "title": "Bloomberg",
+            "image": "BLOOMBERGcorp-logo"
+        },
+        {
+            "name": "cbc-news",
+            "title": "CBC News",
+            "image": "cbc-news"
+        },
+        {
+            "name": "cnbc",
+            "title": "CNBC",
+            "image": "cnbc"
+        },
+        {
+            "name": "cnn",
+            "title": "CNN",
+            "image": "cnn"
+        },
+        {
+            "name": "daily-mail",
+            "title": "Daily Mail",
+            "image": "daily_mail"
+        },
+        {
+            "name": "entertainment-weekly",
+            "title": "Entertainment Weekly",
+            "image": "e_weekly"
+        },
+        {
+            "name": "espn",
+            "title": "ESPN",
+            "image": "espn_logo"
+        },
+        {
+            "name": "financial-post",
+            "title": "Financial Post",
+            "image": "financialpost"
+        },
+        {
+            "name": "football-italia",
+            "title": "Football Italia",
+            "image": "football_Italia"
+        },
+        {
+            "name": "four-four-two",
+            "title": "Four Four Two",
+            "image": "FourFourTwo"
+        },
+        {
+            "name": "fox-news",
+            "title": "Fox News",
+            "image": "fox_channel"
+        },
+        {
+            "name": "fox-sports",
+            "title": "Fox Sports",
+            "image": "foxsports"
+        },
+        {
+            "name": "google-news",
+            "title": "Google News",
+            "image": "googlenews"
+        },
+        {
+            "name": "hacker-news",
+            "title": "Hacker News",
+            "image": "hackernews"
+        },
+        {
+            "name": "mashable",
+            "title": "Mashable",
+            "image": "mashable"
+        },
+        {
+            "name": "medical-news-today",
+            "title": "Medical News Today",
+            "image": "medicalnewstoday"
+        },
+        {
+            "name": "mtv-news",
+            "title": "MTV News",
+            "image": "mtvnews"
+        },
+        {
+            "name": "national-geographic",
+            "title": "National Geographic",
+            "image": "nationalgeographic"
+        },
+        {
+            "name": "nbc-news",
+            "title": "NBC News",
+            "image": "nbcnews"
+        },
+        {
+            "name": "news24",
+            "title": "News24",
+            "image": "news24"
+        },
+        {
+            "name": "newsweek",
+            "title": "Newsweek",
+            "image": "newsweek"
+        },
+        {
+            "name": "nfl-news",
+            "title": "NFL News",
+            "image": "nfl-news"
+        },
+        {
+            "name": "politico",
+            "title": "Politico",
+            "image": "politico"
+        },
+        {
+            "name": "polygon",
+            "title": "Polygon",
+            "image": "polygon"
+        },
+        {
+            "name": "recode",
+            "title": "Recode",
+            "image": "recode"
+        },
+        {
+            "name": "reddit-r-all",
+            "title": "Reddit /r/all",
+            "image": "reddit-r-all"
+        },
+        {
+            "name": "reuters",
+            "title": "Reuters",
+            "image": "reuters"
+        },
+        {
+            "name": "talksport",
+            "title": "TalkSport",
+            "image": "talksport"
+        },
+        {
+            "name": "techcrunch",
+            "title": "Techcrunch",
+            "image": "techcrunch"
+        },
+        {
+            "name": "the-huffington-post",
+            "title": "The Huffington Post",
+            "image": "the-huffington-post"
+        },
+        {
+            "name": "the-irish-times",
+            "title": "The Irish Times",
+            "image": "the-irish-times"
+        },
+        {
+            "name": "the-jerusalem-post",
+            "title": "The Jerusalem Post",
+            "image": "the-jerusalem-post"
+        },
+        {
+            "name": "the-new-york-times",
+            "title": "The New York Times",
+            "image": "the-new-york-times"
+        },
+        {
+            "name": "the-sport-bible",
+            "title": "The Sport Bible",
+            "image": "the-sport-bible"
+        },
+        {
+            "name": "the-wall-street-journal",
+            "title": "The Wall Street Journal",
+            "image": "the-wall-street-journal"
+        },
+        {
+            "name": "the-washington-post",
+            "title": "The Washington Post",
+            "image": "the-washington-post"
+        },
+        {
+            "name": "the-washington-times",
+            "title": "The Washington Times",
+            "image": "the-washington-times"
+        },
+        {
+            "name": "time",
+            "title": "Time",
+            "image": "time"
+        },
+        {
+            "name": "usa-today",
+            "title": "USA Today",
+            "image": "usa-today"
+        }
+    ]
+}

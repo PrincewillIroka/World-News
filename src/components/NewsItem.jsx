@@ -5,15 +5,16 @@ import PropTypes from 'prop-types'
 export default class NewsItem extends Component {
   render() {
     const {
-      author,
+      // author,
       content,
-      description,
-      publishedAt,
-      source,
+      // description,
+      // publishedAt,
+      // source,
       title,
       url,
       urlToImage
     } = this.props.newsData
+
     return (
       <Wrapper>
         <div className="newsItem">
