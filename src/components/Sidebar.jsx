@@ -4,7 +4,8 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import {
   handleNewsSource, handleIsLoading,
-  handleActiveNewsSource, searchTabData
+  handleActiveNewsSource, searchTabData,
+  resetTabData
 } from '../store/actions'
 
 class Sidebar extends Component {
@@ -19,7 +20,7 @@ class Sidebar extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
       )
       .then(res => {
         this.props.changeIsLoading(false)
@@ -32,7 +33,7 @@ class Sidebar extends Component {
     await this.props.changeIsLoading(true)
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?sources=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
       )
       .then(res => {
         this.props.changeIsLoading(false)
@@ -47,6 +48,13 @@ class Sidebar extends Component {
     this.props.searchTabData(this.state.searchText)
   }
 
+  handleClearSearchBar = () => {
+    this.setState({
+      searchText: ''
+    })
+    this.props.resetTabData()
+  }
+
   render() {
     return (
       <Wrapper>
@@ -55,7 +63,11 @@ class Sidebar extends Component {
             <div className="searchContainer2">
               <input type="text" value={this.state.searchText} placeholder="Search"
                 onChange={this.handleSearch} className="searchField" />
-              <i className="fas fa-search searchIcon"></i>
+              {this.state.searchText.length === 0 ? (
+                <i className="fas fa-search searchIcon"></i>
+              ) : (
+                  <i className="fas fa-times-circle searchIcon" onClick={this.handleClearSearchBar}></i>
+                )}
             </div>
           </div>
           <div className="tabsParentContainer">
@@ -69,7 +81,7 @@ class Sidebar extends Component {
                       }`}
                     onClick={e => this.changeNewsSource(dt.name)}
                   >
-                    <img src={require('../assets/logos/' + dt.image + '.png')} alt="" />
+                    <img src={require('../assets/logos/' + dt.image + dt.extension)} alt="" />
                     <span>{dt.title}</span>
                   </div>
                 })
@@ -87,7 +99,8 @@ class Sidebar extends Component {
 const mapStateToProps = state => {
   return {
     newsSource: state.newsSourceReducer.newsSource,
-    tabData: state.newsSourceReducer.tabData
+    tabData: state.newsSourceReducer.tabData,
+    url: state.newsSourceReducer.url
   }
 }
 
@@ -104,7 +117,10 @@ const mapDispatchToProps = dispatch => {
     },
     searchTabData: (value) => {
       dispatch(searchTabData(value))
-    }
+    },
+    resetTabData: () => {
+      dispatch(resetTabData())
+    },
   }
 }
 

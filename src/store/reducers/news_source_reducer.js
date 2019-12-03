@@ -5,7 +5,8 @@ const initialState = {
   isLoading: true,
   activeNewsSource: [],
   tabData: [],
-  tabDataClone: []
+  tabDataClone: [],
+  url: 'sources'
 }
 
 const newsSourceReducer = (state = initialState, action) => {
@@ -40,6 +41,18 @@ const newsSourceReducer = (state = initialState, action) => {
       return {
         ...state,
         tabData: newTabData
+      }
+    }
+    case Actions.RESETTABDATA: {
+      return {
+        ...state,
+        tabData: state.tabDataClone
+      }
+    }
+    case Actions.CHANGEURL: {
+      return {
+        ...state,
+        url: action.payload
       }
     }
     default: {

@@ -18,15 +18,19 @@ export default class NewsItem extends Component {
     return (
       <Wrapper>
         <div className="newsItem">
-          <div>
+          <div className="fContainer">
             <img src={urlToImage} alt="" />
           </div>
-          <div>
+          <div className="sContainer">
             <div>{title}</div>
             <div>
-              <span>{content}</span>
+              <div className="text ellipsis">
+                <span className="text-concat">
+                  {content}
+                </span>
+              </div>
               <span>
-                <a target="blank" href={url}>
+                <a rel="noopener noreferrer" target="blank" href={url}>
                   Read More
                 </a>
               </span>
@@ -61,7 +65,7 @@ const Wrapper = styled.div`
     height: 100%;
     display: flex;
 
-    > div:nth-child(1) {
+    > .fContainer {
       width: 40%;
       height: 100%;
       padding: 5px;
@@ -71,7 +75,8 @@ const Wrapper = styled.div`
         object-fit: cover;
       }
     }
-    > div:nth-child(2) {
+
+    > .sContainer {
       width: 60%;
       display: flex;
       flex-direction: column;
@@ -85,18 +90,44 @@ const Wrapper = styled.div`
         display: flex;
         flex-direction: column;
         padding-top: 20px;
-        > span:nth-child(1) {
+
+        .text {
+          position: relative;
+          font-size: 17px;
+        }
+
+        .text-concat {
+          position: relative;
+          display: inline-block;
+          word-wrap: break-word;
+          overflow: hidden;
+          max-height: 5.6em; /* (Number of lines you want visible) * (line-height) */
+          line-height: 1.8em;
+          text-align:justify;
+        }
+
+        .text.ellipsis::after {
+          content: "";
+          position: absolute;
+          right: -12px; 
+          bottom: 4px;
+        }
+
+        ${'' /* > div:nth-child(1) {
+          word-wrap: break-word;
           overflow: hidden;
           text-overflow: ellipsis;
           display: -webkit-box;
           line-height: 26px;
+          height: 150px;
           max-height: 150px;
           -webkit-line-clamp: 5;
           -webkit-box-orient: vertical;
-        }
+          color: red;
+        } */}
         > span:nth-child(2) {
           color: blue;
-          margin-top: 5px;
+          margin: 10px 0 0 0;
           cursor: default;
         }
       }
@@ -104,7 +135,7 @@ const Wrapper = styled.div`
         margin-top: 10px;
         height: 40px;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
       }
     }
   }

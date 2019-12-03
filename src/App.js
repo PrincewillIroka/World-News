@@ -111,4 +111,16 @@ const Wrapper = styled.div`
       }
     }
   }
+
+  @media (max-width: 960px) {
+    .sidebar{
+      display: none !important;
+    }
+
+    .mainlayout {
+      width: 100% !important;
+    }
+
+  }
+
 `

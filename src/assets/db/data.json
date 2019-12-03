@@ -3,222 +3,593 @@
         {
             "name": "abc-news",
             "title": "ABC News",
-            "image": "abcnews_pearl_stacked"
+            "image": "abcnews_pearl_stacked",
+            "extension": ".png"
         },
         {
             "name": "al-jazeera-english",
             "title": "AlJazeera English",
-            "image": "aljazeraenglish"
+            "image": "aljazeraenglish",
+            "extension": ".png"
         },
         {
             "name": "associated-press",
             "title": "Associated Press",
-            "image": "Associated-Press"
+            "image": "Associated-Press",
+            "extension": ".png"
         },
         {
             "name": "bbc-news",
             "title": "BBC News",
-            "image": "bbcnews"
+            "image": "bbcnews",
+            "extension": ".png"
         },
         {
             "name": "bbc-sport",
             "title": "BBC Sports",
-            "image": "bbcsports"
+            "image": "bbcsports",
+            "extension": ".png"
         },
         {
             "name": "bloomberg",
             "title": "Bloomberg",
-            "image": "BLOOMBERGcorp-logo"
+            "image": "BLOOMBERGcorp-logo",
+            "extension": ".png"
         },
         {
             "name": "cbc-news",
             "title": "CBC News",
-            "image": "cbc-news"
+            "image": "cbc-news",
+            "extension": ".png"
         },
         {
             "name": "cnbc",
             "title": "CNBC",
-            "image": "cnbc"
+            "image": "cnbc",
+            "extension": ".png"
         },
         {
             "name": "cnn",
             "title": "CNN",
-            "image": "cnn"
+            "image": "cnn",
+            "extension": ".png"
         },
         {
             "name": "daily-mail",
             "title": "Daily Mail",
-            "image": "daily_mail"
+            "image": "daily_mail",
+            "extension": ".png"
         },
         {
             "name": "entertainment-weekly",
             "title": "Entertainment Weekly",
-            "image": "e_weekly"
+            "image": "e_weekly",
+            "extension": ".png"
         },
         {
             "name": "espn",
             "title": "ESPN",
-            "image": "espn_logo"
+            "image": "espn_logo",
+            "extension": ".png"
         },
         {
             "name": "financial-post",
             "title": "Financial Post",
-            "image": "financialpost"
+            "image": "financialpost",
+            "extension": ".png"
         },
         {
             "name": "football-italia",
             "title": "Football Italia",
-            "image": "football_Italia"
+            "image": "football_Italia",
+            "extension": ".png"
         },
         {
             "name": "four-four-two",
             "title": "Four Four Two",
-            "image": "FourFourTwo"
+            "image": "FourFourTwo",
+            "extension": ".png"
         },
         {
             "name": "fox-news",
             "title": "Fox News",
-            "image": "fox_channel"
+            "image": "fox_channel",
+            "extension": ".png"
         },
         {
             "name": "fox-sports",
             "title": "Fox Sports",
-            "image": "foxsports"
+            "image": "foxsports",
+            "extension": ".png"
         },
         {
             "name": "google-news",
             "title": "Google News",
-            "image": "googlenews"
+            "image": "googlenews",
+            "extension": ".png"
         },
         {
             "name": "hacker-news",
             "title": "Hacker News",
-            "image": "hackernews"
+            "image": "hackernews",
+            "extension": ".png"
         },
         {
             "name": "mashable",
             "title": "Mashable",
-            "image": "mashable"
+            "image": "mashable",
+            "extension": ".png"
         },
         {
             "name": "medical-news-today",
             "title": "Medical News Today",
-            "image": "medicalnewstoday"
+            "image": "medicalnewstoday",
+            "extension": ".png"
         },
         {
             "name": "mtv-news",
             "title": "MTV News",
-            "image": "mtvnews"
+            "image": "mtvnews",
+            "extension": ".png"
         },
         {
             "name": "national-geographic",
             "title": "National Geographic",
-            "image": "nationalgeographic"
+            "image": "nationalgeographic",
+            "extension": ".png"
         },
         {
             "name": "nbc-news",
             "title": "NBC News",
-            "image": "nbcnews"
+            "image": "nbcnews",
+            "extension": ".png"
         },
         {
             "name": "news24",
             "title": "News24",
-            "image": "news24"
+            "image": "news24",
+            "extension": ".png"
         },
         {
             "name": "newsweek",
             "title": "Newsweek",
-            "image": "newsweek"
+            "image": "newsweek",
+            "extension": ".png"
         },
         {
             "name": "nfl-news",
             "title": "NFL News",
-            "image": "nfl-news"
+            "image": "nfl-news",
+            "extension": ".png"
         },
         {
             "name": "politico",
             "title": "Politico",
-            "image": "politico"
+            "image": "politico",
+            "extension": ".png"
         },
         {
             "name": "polygon",
             "title": "Polygon",
-            "image": "polygon"
+            "image": "polygon",
+            "extension": ".png"
         },
         {
             "name": "recode",
             "title": "Recode",
-            "image": "recode"
+            "image": "recode",
+            "extension": ".png"
         },
         {
             "name": "reddit-r-all",
             "title": "Reddit /r/all",
-            "image": "reddit-r-all"
+            "image": "reddit-r-all",
+            "extension": ".png"
         },
         {
             "name": "reuters",
             "title": "Reuters",
-            "image": "reuters"
+            "image": "reuters",
+            "extension": ".png"
         },
         {
             "name": "talksport",
             "title": "TalkSport",
-            "image": "talksport"
+            "image": "talksport",
+            "extension": ".png"
         },
         {
             "name": "techcrunch",
             "title": "Techcrunch",
-            "image": "techcrunch"
+            "image": "techcrunch",
+            "extension": ".png"
         },
         {
             "name": "the-huffington-post",
             "title": "The Huffington Post",
-            "image": "the-huffington-post"
+            "image": "the-huffington-post",
+            "extension": ".png"
         },
         {
             "name": "the-irish-times",
             "title": "The Irish Times",
-            "image": "the-irish-times"
+            "image": "the-irish-times",
+            "extension": ".png"
         },
         {
             "name": "the-jerusalem-post",
             "title": "The Jerusalem Post",
-            "image": "the-jerusalem-post"
+            "image": "the-jerusalem-post",
+            "extension": ".png"
         },
         {
             "name": "the-new-york-times",
             "title": "The New York Times",
-            "image": "the-new-york-times"
+            "image": "the-new-york-times",
+            "extension": ".png"
         },
         {
             "name": "the-sport-bible",
             "title": "The Sport Bible",
-            "image": "the-sport-bible"
+            "image": "the-sport-bible",
+            "extension": ".png"
         },
         {
             "name": "the-wall-street-journal",
             "title": "The Wall Street Journal",
-            "image": "the-wall-street-journal"
+            "image": "the-wall-street-journal",
+            "extension": ".png"
         },
         {
             "name": "the-washington-post",
             "title": "The Washington Post",
-            "image": "the-washington-post"
+            "image": "the-washington-post",
+            "extension": ".png"
         },
         {
             "name": "the-washington-times",
             "title": "The Washington Times",
-            "image": "the-washington-times"
+            "image": "the-washington-times",
+            "extension": ".png"
         },
         {
             "name": "time",
             "title": "Time",
-            "image": "time"
+            "image": "time",
+            "extension": ".png"
         },
         {
             "name": "usa-today",
             "title": "USA Today",
-            "image": "usa-today"
+            "image": "usa-today",
+            "extension": ".png"
         }
-    ]
+    ],
+    "countries": [
+        {
+            "name": "ar",
+            "title": "Argentina",
+            "image": "ar",
+            "extension": ".svg"
+        },
+        {
+            "name": "au",
+            "title": "Australia",
+            "image": "au",
+            "extension": ".svg"
+        },
+        {
+            "name": "at",
+            "title": "Austria",
+            "image": "at",
+            "extension": ".svg"
+        },
+        {
+            "name": "be",
+            "title": "Belgium",
+            "image": "be",
+            "extension": ".svg"
+        },
+        {
+            "name": "br",
+            "title": "Brazil",
+            "image": "br",
+            "extension": ".svg"
+        },
+        {
+            "name": "bg",
+            "title": "Bulgaria",
+            "image": "bg",
+            "extension": ".svg"
+        },
+        {
+            "name": "ca",
+            "title": "Canada",
+            "image": "ca",
+            "extension": ".svg"
+        },
+        {
+            "name": "cn",
+            "title": "China",
+            "image": "cn",
+            "extension": ".svg"
+        },
+        {
+            "name": "co",
+            "title": "Columbia",
+            "image": "co",
+            "extension": ".svg"
+        },
+        {
+            "name": "cu",
+            "title": "Cuba",
+            "image": "cu",
+            "extension": ".svg"
+        },
+        {
+            "name": "cz",
+            "title": "Czech Republic",
+            "image": "cz",
+            "extension": ".svg"
+        },
+        {
+            "name": "eg",
+            "title": "Egypt",
+            "image": "eg",
+            "extension": ".svg"
+        },
+        {
+            "name": "fr",
+            "title": "France",
+            "image": "fr",
+            "extension": ".svg"
+        },
+        {
+            "name": "de",
+            "title": "Germany",
+            "image": "de",
+            "extension": ".svg"
+        },
+        {
+            "name": "gr",
+            "title": "Greece",
+            "image": "gr",
+            "extension": ".svg"
+        },
+        {
+            "name": "hk",
+            "title": "Hong Kong",
+            "image": "hk",
+            "extension": ".svg"
+        },
+        {
+            "name": "hu",
+            "title": "Hungary",
+            "image": "hu",
+            "extension": ".svg"
+        },
+        {
+            "name": "in",
+            "title": "India",
+            "image": "in",
+            "extension": ".svg"
+        },
+        {
+            "name": "id",
+            "title": "Indonesia",
+            "image": "id",
+            "extension": ".svg"
+        },
+        {
+            "name": "ie",
+            "title": "Ireland",
+            "image": "ie",
+            "extension": ".svg"
+        },
+        {
+            "name": "il",
+            "title": "Isreal",
+            "image": "il",
+            "extension": ".svg"
+        },
+        {
+            "name": "it",
+            "title": "Italy",
+            "image": "it",
+            "extension": ".svg"
+        },
+        {
+            "name": "jp",
+            "title": "Japan",
+            "image": "jp",
+            "extension": ".svg"
+        },
+        {
+            "name": "lv",
+            "title": "Latvia",
+            "image": "lv",
+            "extension": ".svg"
+        },
+        {
+            "name": "lt",
+            "title": "Lithuania",
+            "image": "lt",
+            "extension": ".svg"
+        },
+        {
+            "name": "my",
+            "title": "Malaysia",
+            "image": "my",
+            "extension": ".svg"
+        },
+        {
+            "name": "mx",
+            "title": "Mexico",
+            "image": "mx",
+            "extension": ".svg"
+        },
+        {
+            "name": "ma",
+            "title": "Morocco",
+            "image": "ma",
+            "extension": ".svg"
+        },
+        {
+            "name": "nl",
+            "title": "Netherlands",
+            "image": "nl",
+            "extension": ".svg"
+        },
+        {
+            "name": "nz",
+            "title": "New Zealand",
+            "image": "nz",
+            "extension": ".svg"
+        },
+        {
+            "name": "ng",
+            "title": "Nigeria",
+            "image": "ng",
+            "extension": ".svg"
+        },
+        {
+            "name": "no",
+            "title": "Norway",
+            "image": "no",
+            "extension": ".svg"
+        },
+        {
+            "name": "ph",
+            "title": "Philippines",
+            "image": "ph",
+            "extension": ".svg"
+        },
+        {
+            "name": "pl",
+            "title": "Poland",
+            "image": "pl",
+            "extension": ".svg"
+        },
+        {
+            "name": "pt",
+            "title": "Portugal",
+            "image": "pt",
+            "extension": ".svg"
+        },
+        {
+            "name": "ro",
+            "title": "Romania",
+            "image": "ro",
+            "extension": ".svg"
+        },
+        {
+            "name": "ru",
+            "title": "Russia",
+            "image": "ru",
+            "extension": ".svg"
+        },
+        {
+            "name": "sa",
+            "title": "Saudi Arabia",
+            "image": "sa",
+            "extension": ".svg"
+        },
+        {
+            "name": "rs",
+            "title": "Serbia",
+            "image": "rs",
+            "extension": ".svg"
+        },
+        {
+            "name": "sg",
+            "title": "Singapore",
+            "image": "sg",
+            "extension": ".svg"
+        },
+        {
+            "name": "sk",
+            "title": "Slovakia",
+            "image": "sk",
+            "extension": ".svg"
+        },
+        {
+            "name": "si",
+            "title": "Slovenia",
+            "image": "si",
+            "extension": ".svg"
+        },
+        {
+            "name": "za",
+            "title": "South Africa",
+            "image": "za",
+            "extension": ".svg"
+        },
+        {
+            "name": "kr",
+            "title": "South Korea",
+            "image": "kr",
+            "extension": ".svg"
+        },
+        {
+            "name": "se",
+            "title": "Sweden",
+            "image": "se",
+            "extension": ".svg"
+        },
+        {
+            "name": "ch",
+            "title": "Switzerland",
+            "image": "ch",
+            "extension": ".svg"
+        },
+        {
+            "name": "tw",
+            "title": "Taiwan",
+            "image": "tw",
+            "extension": ".svg"
+        },
+        {
+            "name": "th",
+            "title": "Thailand",
+            "image": "th",
+            "extension": ".svg"
+        },
+        {
+            "name": "tr",
+            "title": "Turkey",
+            "image": "tr",
+            "extension": ".svg"
+        },
+        {
+            "name": "ae",
+            "title": "UAE",
+            "image": "ae",
+            "extension": ".svg"
+        },
+        {
+            "name": "ua",
+            "title": "Ukraine",
+            "image": "ua",
+            "extension": ".svg"
+        },
+        {
+            "name": "gb",
+            "title": "United Kingdom",
+            "image": "gb",
+            "extension": ".svg"
+        },
+        {
+            "name": "us",
+            "title": "United States",
+            "image": "us",
+            "extension": ".svg"
+        },
+        {
+            "name": "ve",
+            "title": "Venuzuela",
+            "image": "ve",
+            "extension": ".svg"
+        }
+    ],
+    "categories": []
 }
