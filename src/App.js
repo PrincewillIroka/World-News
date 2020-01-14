@@ -22,12 +22,10 @@ class App extends Component {
           <div className="header">
             <Header />
           </div>
-          <div>
+          <div className="content-layout">
             <div
-              className={`sidebar ${
-                this.props.currentHamburgerIconState ? 'hidden' : ''
-                }`}
-            >
+              className={`sidebar ${ this.props.currentHamburgerIconState ? 'hidden' : '' }
+            `} >
               <Sidebar />
             </div>
             <div
@@ -68,6 +66,7 @@ const Wrapper = styled.div`
   .App {
     display: flex;
     flex-direction: column;
+    background-color: #fafafa;
 
     > div:nth-child(1) {
       width: 100%;
@@ -75,18 +74,15 @@ const Wrapper = styled.div`
       position: fixed;
       top: 0;
       height: 80px;
-
-      > header {
-      }
     }
 
-    > div:nth-child(2) {
+    > .content-layout {
       display: flex;
+      margin-top: 80px;
 
       > .sidebar {
         display: flex;
-        width: 20%;
-        margin-top: 80px;
+        width: 21.5%;
         height: calc(100vh - 80px);
         -webkit-animation: conditionalOpen 1s normal forwards ease-in-out;
         -moz-animation: conditionalOpen 1s normal forwards ease-in-out;
@@ -97,8 +93,7 @@ const Wrapper = styled.div`
       }
 
       > .mainlayout {
-        width: 80%;
-        margin-top: 80px;
+        // width: calc(100% - 21.5%);
         height: calc(100vh - 80px);
       }
 
@@ -110,17 +105,25 @@ const Wrapper = styled.div`
         width: 100%;
       }
     }
+    
   }
 
   @media (max-width: 960px) {
-    .sidebar{
-      display: none !important;
+    .sidebar {
+      width: 10% !important;
     }
+  }
 
-    .mainlayout {
-      width: 100% !important;
+  @media (max-width: 660px) {
+    .sidebar {
+      width: 12% !important;
     }
+  }
 
+  @media (max-width: 560px) {
+    .sidebar {
+      width: 17% !important;
+    }
   }
 
 `

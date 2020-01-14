@@ -19,25 +19,25 @@ export default class NewsItem extends Component {
       <Wrapper>
         <div className="newsItem">
           <div className="fContainer">
-            <img src={urlToImage} alt="" />
+            <img src={urlToImage} alt="Story Image" />
           </div>
           <div className="sContainer">
-            <div>{title}</div>
-            <div>
+            <div className="sTitle">{title}</div>
+            <div className="sContent">
               <div className="text ellipsis">
                 <span className="text-concat">
                   {content}
                 </span>
               </div>
-              <span>
+              <span className="sMore">
                 <a rel="noopener noreferrer" target="blank" href={url}>
                   Read More
                 </a>
               </span>
             </div>
-            <div>
+            <div className="sSocialMedia">
               <span>
-                <i className="fab fa-twitter"></i>
+              <a href={`https://twitter.com/intent/tweet?text=${title}&url${url}`} data-size="large"><i className="fab fa-twitter"></i></a>
               </span>
               <span>
                 <i className="fab fa-facebook-f"></i>
@@ -64,6 +64,7 @@ const Wrapper = styled.div`
   .newsItem {
     height: 100%;
     display: flex;
+    background-color: #fff;
 
     > .fContainer {
       width: 40%;
@@ -81,15 +82,17 @@ const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       padding: 15px 20px 10px;
-      > div:nth-child(1) {
+      > .sTitle {
         font-weight: bold;
         font-size: 20px;
+        height: 30%;
+        overflow: hidden;
       }
-      > div:nth-child(2) {
-        height: 100%;
+      > .sContent {
+        height: 60%;
         display: flex;
         flex-direction: column;
-        padding-top: 20px;
+        padding-top: 10px;
 
         .text {
           position: relative;
@@ -112,31 +115,44 @@ const Wrapper = styled.div`
           right: -12px; 
           bottom: 4px;
         }
-
-        ${'' /* > div:nth-child(1) {
-          word-wrap: break-word;
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          line-height: 26px;
-          height: 150px;
-          max-height: 150px;
-          -webkit-line-clamp: 5;
-          -webkit-box-orient: vertical;
-          color: red;
-        } */}
-        > span:nth-child(2) {
+        
+        > .sMore {
           color: blue;
           margin: 10px 0 0 0;
           cursor: default;
         }
       }
-      > div:nth-child(3) {
-        margin-top: 10px;
-        height: 40px;
+      > .sSocialMedia {
+        height: 10%;
         display: flex;
         justify-content: space-between;
       }
     }
   }
+
+  @media (max-width: 690px) {
+
+    .newsItem {
+      flex-direction: column !important;
+    }
+
+    .fContainer {
+      width: 100% !important;
+      height: 40% !important;
+    }
+
+    .sContainer {
+      width: 100% !important;
+      height: 60% !important;
+    }
+
+  }
+
+  @media (max-width: 460px) {
+
+    
+
+  }
+
+  
 `

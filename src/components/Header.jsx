@@ -36,24 +36,25 @@ class Header extends Component {
     return (
       <Wrapper>
         <div className="header">
-          <span>
+          <span className="hamburger-icon">
             <i
               onClick={this.handleHamburgerIconClick.bind(this)}
               className="fas fa-bars"
             ></i>
           </span>
-          <span>WorldNews App</span>
-          <div>
+          <span className="app-title">World News</span>
+          <div className="first-div">
             <span className="chooseContainer">
               <select onChange={this.handleSelectChange}>
+                <option value='choose-source'>Choose Source</option>
                 <option value='newsoutlets'>Media Outlets</option>
                 <option value='countries'>Countries</option>
                 {/* <option value='categories'>Categories</option> */}
               </select>
             </span>
             <span className="developedBy">
-              <span>Developed by</span>
-              <span>
+              <span className="dText">Developed by</span>
+              <span className="dText2">
                 <a rel="noopener noreferrer" target="_blank" href="https://princewilliroka.com/">
                   Princewill Iroka
                 </a>
@@ -108,38 +109,40 @@ const Wrapper = styled.div`
     height: 80px;
     background-color: #1ebea5;
     display: flex;
+    flex-direction: row;
     align-items: center;
     color: #fff;
-    padding: 0 20px 0 20px;
+    padding-left: 20px;
+    
 
-    > span:nth-child(1) {
+    > .hamburger-icon {
       font-size: 1.7rem;
+      margin-right: 50px;
     }
 
-    > span:nth-child(2) {
-      font-family: 'Open Sans', sans-serif;
-      margin-left: 50px;
+    > .app-title {
+      font-family: 'Open Sans', sans-serif;      
       font-weight: bold;
-      font-size: 20px;
+      font-size: 1.2rem;
       width: 15%;
     }
 
-    > div:nth-child(3) {
+    > .first-div {
       display: flex;
       align-items: center;
+      padding-right: 20px;
 
       .chooseContainer {
         display: flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid #fff;
+        border: 1px solid #fff;
         border-radius: 20px;
         margin: 0 50px 0 30%;
         padding: 0 5px;
 
         select {
-          width: 100%;
-          padding: 8px 0;
+          padding: 5px 0;
           padding-left: 10px;
           padding-right: 25px;
           background-color: transparent;
@@ -150,7 +153,7 @@ const Wrapper = styled.div`
           background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
           background-repeat: no-repeat;
           background-position-x: 100%;
-          background-position-y: 5px;
+          background-position-y: 2px;
           color: #fff;
         }
 
@@ -167,9 +170,7 @@ const Wrapper = styled.div`
 
         select option[value="Choose a News Source"] {
           color: #ccc;
-        }
-
-        
+        }        
 
       }
 
@@ -179,11 +180,11 @@ const Wrapper = styled.div`
         justify-content: center;
         flex-direction: column;
         margin-left:auto;
-        > span:nth-child(1) {
+        > .dText {
           font-size: 13px;
         }
-        > span:nth-child(2) {
-          font-size: 15px;
+        > .dText2 {
+          font-size: 13px;
           color: #000;
           font-weight: bold;
         }
@@ -193,4 +194,65 @@ const Wrapper = styled.div`
       cursor: default;
     }
   }
+
+  @media(max-width: 1200px){
+    .header {
+      > .app-title {
+        width: 20%;
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  @media(max-width: 962px){
+    .header {
+      > .app-title {
+        width: 25%;
+        font-size: 1.0rem !important;
+      }
+    }
+  }
+
+  @media(max-width: 818px){
+    .header {
+      > .app-title {
+        width: 30%;
+      }
+    }
+  }
+
+  @media(max-width: 690px){
+    .developedBy{
+      display: none !important;
+    }
+
+    select {
+      font-size: 14px !important;
+    }
+  }
+
+  @media(max-width: 619px){
+    .header {
+      > .app-title {
+        width: 35%;
+        font-size: 0.9rem !important;
+      }
+    }
+  }
+
+  @media(max-width: 450px){
+    .header {
+      > .app-title {
+        width: 40% !important;
+        font-size: 0.75rem  !important;
+      }
+    }
+
+    select {
+      font-size: 12px !important;
+    }
+
+    
+  }
+
 `
