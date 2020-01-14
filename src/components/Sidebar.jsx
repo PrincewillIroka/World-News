@@ -21,7 +21,7 @@ class Sidebar extends Component {
   componentDidMount() {
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=${process.env.REACT_APP_API_KEY}`
       )
       .then(res => {
         this.props.changeIsLoading(false);
@@ -34,7 +34,7 @@ class Sidebar extends Component {
     await this.props.changeIsLoading(true);
     axios
       .get(
-        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=277e502592bd4fbba0b5152081152b53`
+        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=${process.env.REACT_APP_API_KEY}`
       )
       .then(res => {
         this.props.changeIsLoading(false);
