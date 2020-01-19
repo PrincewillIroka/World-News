@@ -233,6 +233,7 @@ const Wrapper = styled.div`
 
   @media(max-width: 619px){
     .header {
+      height: 60px;
       > .app-title {
         width: 35%;
         font-size: 0.9rem !important;
@@ -242,6 +243,7 @@ const Wrapper = styled.div`
 
   @media(max-width: 450px){
     .header {
+      height: 60px;
       > .app-title {
         width: 40% !important;
         font-size: 0.75rem  !important;

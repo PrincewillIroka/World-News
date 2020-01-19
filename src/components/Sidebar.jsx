@@ -252,9 +252,5 @@ const Wrapper = styled.div`
     .nSource {
       padding: 7px 5px 7px 5px !important;
     }
-
-    .activeNewsSource {
-      padding-right: 5px !important;
-    }
   }
 `;
