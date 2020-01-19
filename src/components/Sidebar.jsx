@@ -97,6 +97,7 @@ class Sidebar extends Component {
                         dt.image +
                         dt.extension)}
                       alt={dt.title}
+                      className="logo-img"
                     />
                     <span className="d-title">{dt.title}</span>
                   </div>
@@ -251,6 +252,10 @@ const Wrapper = styled.div`
 
     .nSource {
       padding: 7px 5px 7px 5px !important;
+    }
+
+    .logo-img{
+      z-index: -1000;
     }
   }
 `;
