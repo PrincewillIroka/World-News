@@ -76,6 +76,7 @@ const Wrapper = styled.div`
       position: fixed;
       top: 0;
       height: 80px;
+      z-index: 1000;
     }
 
     > .content-layout {
