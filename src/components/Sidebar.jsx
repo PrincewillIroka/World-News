@@ -201,7 +201,7 @@ const Wrapper = styled.div`
           display: flex;
           align-items: center;
           padding: 7px 5px 7px 15px;
-          cursor: default;
+          cursor: pointer;
 
           > img {
             height: 40px;

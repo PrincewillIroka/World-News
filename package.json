@@ -1,6 +1,11 @@
 {
-  "name": "world_news_app",
+  "name": "world-news",
   "version": "0.1.0",
+  "author": {
+    "name": "Princewill Iroka",
+    "url": "https://github.com/PrincewillIroka"
+  },
+  "homepage": "https://github.com/PrincewillIroka/World-News",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free-regular": "^5.0.13",

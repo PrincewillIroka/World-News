@@ -7,9 +7,9 @@ export default class NewsItem extends Component {
     const {
       // author,
       content,
-      description,
+      // description,
       // publishedAt,
-      source,
+      // source,
       title,
       url,
       urlToImage
@@ -22,7 +22,7 @@ export default class NewsItem extends Component {
             <img src={urlToImage} alt="Story Image" />
           </div>
           <div className="sContainer">
-            <div className="sTitle">{title}</div>
+            <a rel="noopener noreferrer" target="blank" href={url} className="sTitle">{title}</a>
             <div className="sContent">
               <div className="text ellipsis">
                 <span className="text-concat">{content}</span>
