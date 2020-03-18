@@ -1,4 +1,4 @@
-## WorldNews
+## World-News
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A React JS app that provides a curation of news from over 50 top news sites around the world. 
