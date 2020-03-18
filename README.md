@@ -1,68 +1,36 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## WorldNewsApp
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## Available Scripts
+An React app that provides a curation of news from over 50 top news sites around the world. 
 
-In the project directory, you can run:
+### Live
+https://worldnewsapp.netlify.com/
 
-### `npm start`
+### Features
+- Users can access news from top sites(news outlets) around the world.
+- Users can access news from different countries.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### App User Interface
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+![Home Screen](https://imgur.com/jwN8QXu.png)
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Credit
+The news sources are gotten from https://newsapi.org/
 
-### `npm run build`
+### Usage and Setup
+- Clone this repo. Go into the root folder and run *yarn* to install the dependencies.
+- Create a .env file in the root folder of this project.
+- Go to https://newsapi.org/, and get a free api key.
+- Set the api key you got as REACT_APP_API_KEY in the .env file.
+- Run *yarn start* to start the app.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Like this project?
+Don't forget to star :star2: this repo.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Want to contribute or need to see some improvements?
+I would love that, please create an issue or send a PR.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### License
+Copyright 2020 **Princewill Iroka** \
+This project is licensed under the terms of the [MIT license.](https://github.com/PrincewillIroka/WorldNewsApp/blob/master/LICENSE)
