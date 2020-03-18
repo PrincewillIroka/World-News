@@ -1,4 +1,4 @@
-## WorldNewsApp
+## WorldNews
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A React JS app that provides a curation of news from over 50 top news sites around the world. 
@@ -32,4 +32,4 @@ I would love that, please create an issue or send a PR.
 
 ### License
 Copyright 2020 **Princewill Iroka** \
-This project is licensed under the terms of the [MIT license.](https://github.com/PrincewillIroka/WorldNewsApp/blob/master/LICENSE)
+This project is licensed under the terms of the [MIT license.](https://github.com/PrincewillIroka/World-News/blob/master/LICENSE)
