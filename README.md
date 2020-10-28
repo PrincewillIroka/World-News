@@ -8,7 +8,7 @@ https://worldnewsapp.netlify.com/
 
 ### Features
 - Users can access news from top sites(news outlets) around the world.
-- Users can access news from different countries.
+- Users can access news from different countries and their official languages too.
 
 ### App User Interface
 
