@@ -7,51 +7,52 @@ import {
   handleIsLoading,
   handleActiveNewsSource,
   searchTabData,
-  resetTabData
+  resetTabData,
 } from "../store/actions";
 
 class Sidebar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: ""
+      searchText: "",
+      url: props.url,
+      proxy_url: props.proxy_url,
+      api_key: props.api_key,
+      newsSource: props.newsSource,
     };
   }
 
   componentDidMount() {
-    axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=${process.env.REACT_APP_API_KEY}`
-      )
-      .then(res => {
-        this.props.changeIsLoading(false);
-        this.props.changeActiveNewsSource(res.data.articles);
-      });
+    const { url, proxy_url, api_key, newsSource } = this.state;
+    const nUrl = `https://newsapi.org/v2/top-headlines?${url}=${newsSource}&apiKey=${api_key}`;
+
+    axios.post(`${proxy_url}/getNews`, { url: nUrl }).then((res) => {
+      this.props.changeIsLoading(false);
+      this.props.changeActiveNewsSource(res.data.articles);
+    });
   }
 
-  changeNewsSource = async newsSource => {
+  changeNewsSource = async (newsSource) => {
+    const { url, proxy_url, api_key } = this.state;
     await this.props.changeNewsSource(newsSource);
     await this.props.changeIsLoading(true);
-    axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=${process.env.REACT_APP_API_KEY}`
-      )
-      .then(res => {
-        this.props.changeIsLoading(false);
-        this.props.changeActiveNewsSource(res.data.articles);
-      });
+    const nUrl = `https://newsapi.org/v2/top-headlines?${url}=${newsSource}&apiKey=${api_key}`;
+    axios.post(`${proxy_url}/getNews`, { url: nUrl }).then((res) => {
+      this.props.changeIsLoading(false);
+      this.props.changeActiveNewsSource(res.data.articles);
+    });
   };
 
-  handleSearch = async event => {
+  handleSearch = async (event) => {
     await this.setState({
-      searchText: event.target.value.toLowerCase()
+      searchText: event.target.value.toLowerCase(),
     });
     this.props.searchTabData(this.state.searchText);
   };
 
   handleClearSearchBar = () => {
     this.setState({
-      searchText: ""
+      searchText: "",
     });
     this.props.resetTabData();
   };
@@ -81,7 +82,7 @@ class Sidebar extends Component {
           </div>
           <div className="tabsParentContainer">
             <div className="tabsContainer">
-              {this.props.tabData.map(dt => {
+              {this.props.tabData.map((dt) => {
                 return (
                   <div
                     key={dt.name}
@@ -90,7 +91,7 @@ class Sidebar extends Component {
                         ? "activeNewsSource"
                         : ""
                     }`}
-                    onClick={e => this.changeNewsSource(dt.name)}
+                    onClick={(e) => this.changeNewsSource(dt.name)}
                   >
                     <img
                       src={require("../assets/logos/" +
@@ -111,31 +112,33 @@ class Sidebar extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     newsSource: state.newsSourceReducer.newsSource,
     tabData: state.newsSourceReducer.tabData,
-    url: state.newsSourceReducer.url
+    url: state.newsSourceReducer.url,
+    proxy_url: state.newsSourceReducer.proxy_url,
+    api_key: state.newsSourceReducer.api_key,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    changeNewsSource: newsSource => {
+    changeNewsSource: (newsSource) => {
       dispatch(handleNewsSource(newsSource));
     },
-    changeIsLoading: isLoading => {
+    changeIsLoading: (isLoading) => {
       dispatch(handleIsLoading(isLoading));
     },
-    changeActiveNewsSource: activeNewsSource => {
+    changeActiveNewsSource: (activeNewsSource) => {
       dispatch(handleActiveNewsSource(activeNewsSource));
     },
-    searchTabData: value => {
+    searchTabData: (value) => {
       dispatch(searchTabData(value));
     },
     resetTabData: () => {
       dispatch(resetTabData());
-    }
+    },
   };
 };
 
@@ -254,7 +257,7 @@ const Wrapper = styled.div`
       padding: 7px 5px 7px 5px !important;
     }
 
-    .logo-img{
+    .logo-img {
       z-index: -1000;
     }
   }

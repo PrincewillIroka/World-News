@@ -6,7 +6,9 @@ const initialState = {
   activeNewsSource: [],
   tabData: [],
   tabDataClone: [],
-  url: 'sources'
+  url: 'sources',
+  api_key: process.env.REACT_APP_API_KEY,
+  proxy_url: process.env.REACT_APP_PROXY_URL,
 }
 
 const newsSourceReducer = (state = initialState, action) => {

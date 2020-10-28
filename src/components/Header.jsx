@@ -9,7 +9,7 @@ import {
   changeUrl,
   handleNewsSource,
   handleIsLoading,
-  handleActiveNewsSource
+  handleActiveNewsSource,
 } from "../store/actions";
 
 class Header extends Component {
@@ -17,21 +17,20 @@ class Header extends Component {
     this.props.handleHamburgerIconClick(!this.props.currentHamburgerIconState);
   }
 
-  handleSelectChange = async event => {
+  handleSelectChange = async (event) => {
     let selectedSource = event.target.value;
     let dUrl = selectedSource === "newsoutlets" ? "sources" : "country";
     await this.props.handleChangeUrl(dUrl);
     await this.props.changeNewsSource(db[selectedSource][0].name);
     await this.props.handlePopulateTabData(db[selectedSource]);
     await this.props.changeIsLoading(true);
-    axios
-      .get(
-        `https://newsapi.org/v2/top-headlines?${this.props.url}=${this.props.newsSource}&apiKey=${process.env.REACT_APP_API_KEY}`
-      )
-      .then(res => {
-        this.props.changeIsLoading(false);
-        this.props.changeActiveNewsSource(res.data.articles);
-      });
+    const { url, proxy_url, api_key, newsSource } = this.props;
+    const nUrl = `https://newsapi.org/v2/top-headlines?${url}=${newsSource}&apiKey=${api_key}`;
+
+    axios.post(`${proxy_url}/getNews`, { url: nUrl }).then((res) => {
+      this.props.changeIsLoading(false);
+      this.props.changeActiveNewsSource(res.data.articles);
+    });
   };
 
   render() {
@@ -79,35 +78,37 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     currentHamburgerIconState:
       state.hamburgerIconReducer.currentHamburgerIconState,
     newsSource: state.newsSourceReducer.newsSource,
-    url: state.newsSourceReducer.url
+    url: state.newsSourceReducer.url,
+    proxy_url: state.newsSourceReducer.proxy_url,
+    api_key: state.newsSourceReducer.api_key,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    handleHamburgerIconClick: currentHamburgerIconState => {
+    handleHamburgerIconClick: (currentHamburgerIconState) => {
       dispatch(handleHamburgerIconState(currentHamburgerIconState));
     },
-    handlePopulateTabData: data => {
+    handlePopulateTabData: (data) => {
       dispatch(populateTabData(data));
     },
-    handleChangeUrl: dUrl => {
+    handleChangeUrl: (dUrl) => {
       dispatch(changeUrl(dUrl));
     },
-    changeNewsSource: newsSource => {
+    changeNewsSource: (newsSource) => {
       dispatch(handleNewsSource(newsSource));
     },
-    changeIsLoading: isLoading => {
+    changeIsLoading: (isLoading) => {
       dispatch(handleIsLoading(isLoading));
     },
-    changeActiveNewsSource: activeNewsSource => {
+    changeActiveNewsSource: (activeNewsSource) => {
       dispatch(handleActiveNewsSource(activeNewsSource));
-    }
+    },
   };
 };
 
@@ -197,15 +198,14 @@ const Wrapper = styled.div`
           margin-bottom: 7px;
         }
 
-        .credit{
+        .credit {
           font-size: 10px;
           color: #000;
-    
-          span:nth-child(2){
+
+          span:nth-child(2) {
             font-weight: bold;
             margin-left: 5px;
           }
-    
         }
       }
     }
