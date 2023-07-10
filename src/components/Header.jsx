@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import { connect } from "react-redux";
 import axios from "axios";
 import db from "../assets/db/data.json";
 import {
@@ -12,107 +12,71 @@ import {
   handleActiveNewsSource,
 } from "../store/actions";
 
-class Header extends Component {
-  handleHamburgerIconClick() {
-    this.props.handleHamburgerIconClick(!this.props.currentHamburgerIconState);
+function Header() {
+  const dispatch = useDispatch();
+  const state = useSelector((state) => state);
+  const { url, proxy_url, api_key, newsSource } = state;
+
+  function handleHamburgerIconClick() {
+    dispatch(handleHamburgerIconState(!state.currentHamburgerIconState));
   }
 
-  handleSelectChange = async (event) => {
+  const handleSelectChange = async (event) => {
     let selectedSource = event.target.value;
     let dUrl = selectedSource === "newsoutlets" ? "sources" : "country";
-    await this.props.handleChangeUrl(dUrl);
-    await this.props.changeNewsSource(db[selectedSource][0].name);
-    await this.props.handlePopulateTabData(db[selectedSource]);
-    await this.props.changeIsLoading(true);
-    const { url, proxy_url, api_key, newsSource } = this.props;
+    await dispatch(changeUrl(dUrl));
+    await dispatch(handleNewsSource(db[selectedSource][0].name));
+    await dispatch(populateTabData(db[selectedSource]));
+    await dispatch(handleIsLoading(true));
     const nUrl = `https://newsapi.org/v2/top-headlines?${url}=${newsSource}&apiKey=${api_key}`;
 
     axios.post(`${proxy_url}/getNews`, { url: nUrl }).then((res) => {
-      this.props.changeIsLoading(false);
-      this.props.changeActiveNewsSource(res.data.articles);
+      dispatch(handleIsLoading(false));
+      dispatch(handleActiveNewsSource(res.data.articles));
     });
   };
 
-  render() {
-    return (
-      <Wrapper>
-        <div className="header">
-          <span className="hamburger-icon">
-            <i
-              onClick={this.handleHamburgerIconClick.bind(this)}
-              className="fas fa-bars"
-            ></i>
+  return (
+    <Wrapper>
+      <div className="header">
+        <span className="hamburger-icon">
+          <i onClick={handleHamburgerIconClick} className="fas fa-bars"></i>
+        </span>
+        <span className="app-title">World News</span>
+        <div className="first-div">
+          <span className="chooseContainer">
+            <select onChange={handleSelectChange}>
+              <option value="choose-source">Choose Source</option>
+              <option value="newsoutlets">Media Outlets</option>
+              <option value="countries">Countries</option>
+              {/* <option value='categories'>Categories</option> */}
+            </select>
           </span>
-          <span className="app-title">World News</span>
-          <div className="first-div">
-            <span className="chooseContainer">
-              <select onChange={this.handleSelectChange}>
-                <option value="choose-source">Choose Source</option>
-                <option value="newsoutlets">Media Outlets</option>
-                <option value="countries">Countries</option>
-                {/* <option value='categories'>Categories</option> */}
-              </select>
+          <span className="developedBy">
+            <span className="dText">Developed by</span>
+            <span className="dText2">
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://princewilliroka.com/"
+              >
+                Princewill Iroka
+              </a>
             </span>
-            <span className="developedBy">
-              <span className="dText">Developed by</span>
-              <span className="dText2">
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://princewilliroka.com/"
-                >
-                  Princewill Iroka
-                </a>
-              </span>
-              <span className="credit">
-                <span>Credit:</span>
-                <span>
-                  <a href="https://newsapi.org/">NewsAPI.org</a>
-                </span>
+            <span className="credit">
+              <span>Credit:</span>
+              <span>
+                <a href="https://newsapi.org/">NewsAPI.org</a>
               </span>
             </span>
-          </div>
+          </span>
         </div>
-      </Wrapper>
-    );
-  }
+      </div>
+    </Wrapper>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    currentHamburgerIconState:
-      state.hamburgerIconReducer.currentHamburgerIconState,
-    newsSource: state.newsSourceReducer.newsSource,
-    url: state.newsSourceReducer.url,
-    proxy_url: state.newsSourceReducer.proxy_url,
-    api_key: state.newsSourceReducer.api_key,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    handleHamburgerIconClick: (currentHamburgerIconState) => {
-      dispatch(handleHamburgerIconState(currentHamburgerIconState));
-    },
-    handlePopulateTabData: (data) => {
-      dispatch(populateTabData(data));
-    },
-    handleChangeUrl: (dUrl) => {
-      dispatch(changeUrl(dUrl));
-    },
-    changeNewsSource: (newsSource) => {
-      dispatch(handleNewsSource(newsSource));
-    },
-    changeIsLoading: (isLoading) => {
-      dispatch(handleIsLoading(isLoading));
-    },
-    changeActiveNewsSource: (activeNewsSource) => {
-      dispatch(handleActiveNewsSource(activeNewsSource));
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
 
 const Wrapper = styled.div`
   .header {
@@ -127,6 +91,7 @@ const Wrapper = styled.div`
     > .hamburger-icon {
       font-size: 1.7rem;
       margin-right: 50px;
+      cursor: pointer;
     }
 
     > .app-title {
@@ -149,6 +114,7 @@ const Wrapper = styled.div`
         border-radius: 20px;
         margin: 0 50px 0 30%;
         padding: 0 5px;
+        cursor: pointer;
 
         select {
           padding: 5px 0;

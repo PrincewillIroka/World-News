@@ -1,6 +1,6 @@
-import React, { Component } from "react";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
-import { connect } from "react-redux";
 import axios from "axios";
 import {
   handleNewsSource,
@@ -10,139 +10,92 @@ import {
   resetTabData,
 } from "../store/actions";
 
-class Sidebar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      searchText: "",
-      url: props.url,
-      proxy_url: props.proxy_url,
-      api_key: props.api_key,
-      newsSource: props.newsSource,
-    };
-  }
+function Sidebar() {
+  const dispatch = useDispatch();
+  const { url, proxy_url, api_key, newsSource, tabData } = useSelector(
+    (state) => state
+  );
+  const [searchText, setSearchText] = useState("");
 
-  componentDidMount() {
-    const { url, proxy_url, api_key, newsSource } = this.state;
+  useEffect(() => {
     const nUrl = `https://newsapi.org/v2/top-headlines?${url}=${newsSource}&apiKey=${api_key}`;
 
     axios.post(`${proxy_url}/getNews`, { url: nUrl }).then((res) => {
-      this.props.changeIsLoading(false);
-      this.props.changeActiveNewsSource(res.data.articles);
+      dispatch(handleIsLoading(false));
+      dispatch(handleActiveNewsSource(res.data.articles));
     });
-  }
+  }, [dispatch, url, proxy_url, api_key, newsSource]);
 
-  changeNewsSource = async (newsSource) => {
-    const { url, proxy_url, api_key } = this.state;
-    await this.props.changeNewsSource(newsSource);
-    await this.props.changeIsLoading(true);
+  const handleChangeNewsSource = async (newsSource) => {
+    await dispatch(handleNewsSource(newsSource));
+    await dispatch(handleIsLoading(true));
     const nUrl = `https://newsapi.org/v2/top-headlines?${url}=${newsSource}&apiKey=${api_key}`;
     axios.post(`${proxy_url}/getNews`, { url: nUrl }).then((res) => {
-      this.props.changeIsLoading(false);
-      this.props.changeActiveNewsSource(res.data.articles);
+      dispatch(handleIsLoading(false));
+      dispatch(handleActiveNewsSource(res.data.articles));
     });
   };
 
-  handleSearch = async (event) => {
-    await this.setState({
-      searchText: event.target.value.toLowerCase(),
-    });
-    this.props.searchTabData(this.state.searchText);
+  const handleSearch = async (event) => {
+    setSearchText(event.target.value.toLowerCase());
+    dispatch(searchTabData(searchText));
   };
 
-  handleClearSearchBar = () => {
-    this.setState({
-      searchText: "",
-    });
-    this.props.resetTabData();
+  const handleClearSearchBar = () => {
+    setSearchText("");
+    dispatch(resetTabData());
   };
 
-  render() {
-    return (
-      <Wrapper>
-        <div className="sidebarContainer">
-          <div className="searchContainer">
-            <div className="searchContainer2">
-              <input
-                type="text"
-                value={this.state.searchText}
-                placeholder="Search"
-                onChange={this.handleSearch}
-                className="searchField"
-              />
-              {this.state.searchText.length === 0 ? (
-                <i className="fas fa-search searchIcon"></i>
-              ) : (
-                <i
-                  className="fas fa-times-circle searchIcon"
-                  onClick={this.handleClearSearchBar}
-                ></i>
-              )}
-            </div>
-          </div>
-          <div className="tabsParentContainer">
-            <div className="tabsContainer">
-              {this.props.tabData.map((dt) => {
-                return (
-                  <div
-                    key={dt.name}
-                    className={`nSource ${
-                      this.props.newsSource === dt.name
-                        ? "activeNewsSource"
-                        : ""
-                    }`}
-                    onClick={(e) => this.changeNewsSource(dt.name)}
-                  >
-                    <img
-                      src={require("../assets/logos/" +
-                        dt.image +
-                        dt.extension)}
-                      alt={dt.title}
-                      className="logo-img"
-                    />
-                    <span className="d-title">{dt.title}</span>
-                  </div>
-                );
-              })}
-            </div>
+  return (
+    <Wrapper>
+      <div className="sidebarContainer">
+        <div className="searchContainer">
+          <div className="searchContainer2">
+            <input
+              type="text"
+              value={searchText}
+              placeholder="Search"
+              onChange={handleSearch}
+              className="searchField"
+            />
+            {searchText.length === 0 ? (
+              <i className="fas fa-search searchIcon"></i>
+            ) : (
+              <i
+                className="fas fa-times-circle searchIcon"
+                onClick={handleClearSearchBar}
+              ></i>
+            )}
           </div>
         </div>
-      </Wrapper>
-    );
-  }
+        <div className="tabsParentContainer">
+          <div className="tabsContainer">
+            {tabData.map((dt) => {
+              return (
+                <div
+                  key={dt.name}
+                  className={`nSource ${
+                    newsSource === dt.name ? "activeNewsSource" : ""
+                  }`}
+                  onClick={(e) => handleChangeNewsSource(dt.name)}
+                >
+                  <img
+                    src={require("../assets/logos/" + dt.image + dt.extension)}
+                    alt={dt.title}
+                    className="logo-img"
+                  />
+                  <span className="d-title">{dt.title}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  );
 }
 
-const mapStateToProps = (state) => {
-  return {
-    newsSource: state.newsSourceReducer.newsSource,
-    tabData: state.newsSourceReducer.tabData,
-    url: state.newsSourceReducer.url,
-    proxy_url: state.newsSourceReducer.proxy_url,
-    api_key: state.newsSourceReducer.api_key,
-  };
-};
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    changeNewsSource: (newsSource) => {
-      dispatch(handleNewsSource(newsSource));
-    },
-    changeIsLoading: (isLoading) => {
-      dispatch(handleIsLoading(isLoading));
-    },
-    changeActiveNewsSource: (activeNewsSource) => {
-      dispatch(handleActiveNewsSource(activeNewsSource));
-    },
-    searchTabData: (value) => {
-      dispatch(searchTabData(value));
-    },
-    resetTabData: () => {
-      dispatch(resetTabData());
-    },
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Sidebar);
+export default Sidebar;
 
 const Wrapper = styled.div`
   .sidebarContainer {

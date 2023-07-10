@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import NewsItem from "./NewsItem";
-import { connect } from "react-redux";
 
-const ANewsItem = obj => {
+const ANewsItem = (obj) => {
   return obj.activeNewsSource.map((newsData, index) => (
     <NewsItem key={index} newsData={newsData} />
   ));
@@ -21,36 +21,29 @@ const Spinner = () => {
   );
 };
 
-class MainLayout extends Component {
-  render() {
-    return (
-      <Wrapper>
-        <div className="mainlayoutContainer">
-          {this.props.isLoading ? (
-            <Spinner />
-          ) : this.props.activeNewsSource.length > 0 ? (
-            <div className="realContainer">
-              <ANewsItem activeNewsSource={this.props.activeNewsSource} />
-            </div>
-          ) : (
-            <div className="emptyContainer">
-              <span>None Found</span>
-            </div>
-          )}
-        </div>
-      </Wrapper>
-    );
-  }
+function MainLayout() {
+  const { isLoading, activeNewsSource } = useSelector((state) => state);
+
+  return (
+    <Wrapper>
+      <div className="mainlayoutContainer">
+        {isLoading ? (
+          <Spinner />
+        ) : activeNewsSource.length > 0 ? (
+          <div className="realContainer">
+            <ANewsItem activeNewsSource={activeNewsSource} />
+          </div>
+        ) : (
+          <div className="emptyContainer">
+            <span>None Found</span>
+          </div>
+        )}
+      </div>
+    </Wrapper>
+  );
 }
 
-const mapStateToProps = state => {
-  return {
-    isLoading: state.newsSourceReducer.isLoading,
-    activeNewsSource: state.newsSourceReducer.activeNewsSource
-  };
-};
-
-export default connect(mapStateToProps, null)(MainLayout);
+export default MainLayout;
 
 const Wrapper = styled.div`
   .mainlayoutContainer {

@@ -1,68 +1,51 @@
-import React, { Component } from 'react'
-import db from './assets/db/data.json'
-import './App.css'
-import Header from './components/Header'
-import Sidebar from './components/Sidebar'
-import MainLayout from './components/MainLayout'
-import styled from 'styled-components'
-import '@fortawesome/fontawesome-free/css/all.min.css'
-import { connect } from 'react-redux'
-import { populateTabData } from './store/actions'
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import db from "./assets/db/data.json";
+import "./App.css";
+import Header from "./components/Header";
+import Sidebar from "./components/Sidebar";
+import MainLayout from "./components/MainLayout";
+import styled from "styled-components";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { populateTabData } from "./store/actions";
 
-class App extends Component {
+function App() {
+  const dispatch = useDispatch();
+  const currentHamburgerIconState = useSelector(
+    (state) => state.currentHamburgerIconState
+  );
 
-  componentDidMount() {
-    this.props.handlePopulateTabData(db.newsoutlets)
-  }
+  useEffect(() => {
+    dispatch(populateTabData(db.newsoutlets));
+  }, [dispatch]);
 
-  render() {
-    return (
-      <Wrapper>
-        <div className="App">
-          <div className="header">
-            <Header />
-          </div>
-          <div className="content-layout">
-            <div
-              className={`sidebar ${ this.props.currentHamburgerIconState ? 'hidden' : '' }
-            `} >
-              <Sidebar />
-            </div>
-            <div
-              className={`mainlayout ${
-                this.props.currentHamburgerIconState ? 'expanded' : ''
-                }`}
-            >
-              <MainLayout />
-            </div>
-          </div>
-          
-          
+  return (
+    <Wrapper>
+      <div className="App">
+        <div className="header">
+          <Header />
         </div>
-      </Wrapper>
-    )
-  }
+        <div className="content-layout">
+          <div
+            className={`sidebar ${currentHamburgerIconState ? "hidden" : ""}
+            `}
+          >
+            <Sidebar />
+          </div>
+          <div
+            className={`mainlayout ${
+              currentHamburgerIconState ? "expanded" : ""
+            }`}
+          >
+            <MainLayout />
+          </div>
+        </div>
+      </div>
+    </Wrapper>
+  );
 }
 
-const mapStateToProps = state => {
-  return {
-    currentHamburgerIconState:
-      state.hamburgerIconReducer.currentHamburgerIconState
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    handlePopulateTabData: data => {
-      dispatch(populateTabData(data))
-    }
-  }
-}
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default App;
 
 const Wrapper = styled.div`
   .App {
@@ -108,7 +91,6 @@ const Wrapper = styled.div`
         width: 100%;
       }
     }
-    
   }
 
   @media (max-width: 960px) {
@@ -128,5 +110,4 @@ const Wrapper = styled.div`
       width: 17% !important;
     }
   }
-
-`
+`;

@@ -1,73 +1,77 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
-import PropTypes from "prop-types";
 
-export default class NewsItem extends Component {
-  render() {
-    const {
-      // author,
-      content,
-      // description,
-      // publishedAt,
-      // source,
-      title,
-      url,
-      urlToImage
-    } = this.props.newsData;
+function NewsItem({ newsData = {} }) {
+  const {
+    // author,
+    content,
+    // description,
+    // publishedAt,
+    // source,
+    title,
+    url,
+    urlToImage,
+  } = newsData;
 
-    return (
-      <Wrapper>
-        <div className="newsItem">
-          <div className="fContainer">
-            <img src={urlToImage} alt="Story Image" />
+  return (
+    <Wrapper>
+      <div className="newsItem">
+        <div className="fContainer">
+          <img src={urlToImage} alt="Story" />
+        </div>
+        <div className="sContainer">
+          <a
+            rel="noopener noreferrer"
+            target="blank"
+            href={url}
+            className="sTitle"
+          >
+            {title}
+          </a>
+          <div className="sContent">
+            <div className="text ellipsis">
+              <span className="text-concat">{content}</span>
+            </div>
+            <span className="sMore">
+              <a rel="noopener noreferrer" target="blank" href={url}>
+                Read More
+              </a>
+            </span>
           </div>
-          <div className="sContainer">
-            <a rel="noopener noreferrer" target="blank" href={url} className="sTitle">{title}</a>
-            <div className="sContent">
-              <div className="text ellipsis">
-                <span className="text-concat">{content}</span>
-              </div>
-              <span className="sMore">
-                <a rel="noopener noreferrer" target="blank" href={url}>
-                  Read More
-                </a>
-              </span>
-            </div>
-            <div className="sSocialMedia">
-              <span>
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${url}`}
-                  data-size="large"
-                >
-                  <i className="fab fa-twitter"></i>
-                </a>
-              </span>
-              <span>
-                <a href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}>
-                  <i className="fab fa-facebook-f"></i>
-                </a>
-              </span>
-              <span>
-                <a href={`https://www.linkedin.com/sharing/share-offsite?url=${url}&title=${title}`}>
-                  <i className="fab fa-linkedin"></i>
-                </a>
-              </span>
-              <span>
-                <a href={`https://reddit.com/submit?url=${url}&title=${title}`}>
-                  <i className="fab fa-reddit"></i>
-                </a>
-              </span>
-            </div>
+          <div className="sSocialMedia">
+            <span>
+              <a
+                href={`https://twitter.com/intent/tweet?text=${url}`}
+                data-size="large"
+              >
+                <i className="fab fa-twitter"></i>
+              </a>
+            </span>
+            <span>
+              <a href={`https://www.facebook.com/sharer/sharer.php?u=${url}`}>
+                <i className="fab fa-facebook-f"></i>
+              </a>
+            </span>
+            <span>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite?url=${url}&title=${title}`}
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+            </span>
+            <span>
+              <a href={`https://reddit.com/submit?url=${url}&title=${title}`}>
+                <i className="fab fa-reddit"></i>
+              </a>
+            </span>
           </div>
         </div>
-      </Wrapper>
-    );
-  }
+      </div>
+    </Wrapper>
+  );
 }
 
-NewsItem.propTypes = {
-  newsData: PropTypes.object.isRequired
-};
+export default NewsItem;
 
 const Wrapper = styled.div`
   .newsItem {
