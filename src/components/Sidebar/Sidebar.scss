@@ -1,0 +1,119 @@
+.sidebar-container {
+  width: auto;
+  display: block;
+  position: fixed;
+  background-color: #f4f4f4;
+  box-shadow: 5px 0 5px -5px #bbb;
+
+  > .search-container {
+    padding: 20px 5%;
+
+    > .search-container2 {
+      height: 35px;
+      background-color: #fff;
+      border-radius: 3px;
+      display: flex;
+      padding: 0 10px;
+      box-shadow: 0 7px 17px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+
+      > .searchField {
+        border: none;
+        outline: none;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      > .searchIcon {
+        align-self: center;
+        color: #ccc;
+      }
+    }
+  }
+
+  > .tabsParent-container {
+    height: 100vh;
+    overflow-y: hidden;
+    padding-bottom: 200px;
+
+    &:hover {
+      overflow-y: scroll;
+    }
+
+    > .tabs-container {
+      display: grid;
+      grid-template-columns: repeat(1, 100% [col-start]);
+
+      > div:nth-child(1) {
+        margin-top: 10px;
+      }
+
+      > div:last-child {
+        margin-bottom: 30px;
+      }
+
+      > .nSource {
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        padding: 7px 5px 7px 15px;
+        cursor: pointer;
+
+        > img {
+          height: 40px;
+          width: 40px;
+          max-height: 40px;
+          max-width: 40px;
+          margin-right: 20px;
+          object-fit: contain;
+        }
+
+        > .d-title {
+          font-size: 16px;
+          font-family: "Source Sans Pro", sans-serif;
+        }
+
+        &:hover {
+          background-color: #fff;
+        }
+      }
+
+      > .activeNewsSource {
+        border-right: 5px solid #242145;
+      }
+    }
+  }
+}
+
+@media (max-width: 960px) {
+  .sidebar-container {
+    width: 10% !important;
+  }
+
+  .search-container {
+    display: none !important;
+  }
+
+  .d-title {
+    display: none !important;
+  }
+}
+
+@media (max-width: 660px) {
+  .sidebar-container {
+    width: 12% !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .sidebar-container {
+    width: 17% !important;
+  }
+
+  .nSource {
+    padding: 7px 5px 7px 5px !important;
+  }
+
+  .logo-img {
+    z-index: -1000;
+  }
+}

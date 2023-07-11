@@ -1,0 +1,159 @@
+.header {
+  height: 80px;
+  background-color: #242145;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #fff;
+  padding-left: 20px;
+}
+
+.hamburger-icon {
+  font-size: 1.7rem;
+  margin-right: 50px;
+  cursor: pointer;
+}
+
+.app-title {
+  font-family: "Open Sans", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 15%;
+}
+
+.row-centered {
+  display: flex;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.choose-source-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  margin: 0 50px 0 30%;
+  padding: 0 5px;
+  cursor: pointer;
+}
+
+select {
+  width: 10rem;
+  height: 1.7rem;
+  padding: 0 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='white' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-position-y: 2px;
+  color: #fff;
+  cursor: pointer;
+}
+
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+select option {
+  background-color: #f4f4f4;
+  color: #000;
+  font-size: 17px;
+}
+
+select option[value="Choose a News Source"] {
+  color: #ccc;
+}
+
+.developed-by {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-left: auto;
+}
+.dText {
+  font-size: 12px;
+}
+
+.dText2 {
+  font-size: 12px;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 7px;
+}
+
+.credit {
+  font-size: 10px;
+  color: #000;
+
+  span:nth-child(2) {
+    font-weight: bold;
+    margin-left: 5px;
+  }
+}
+
+.chooseText {
+  cursor: default;
+}
+
+@media (max-width: 1200px) {
+  .app-title {
+    width: 20%;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 962px) {
+  .app-title {
+    width: 25%;
+    font-size: 1rem !important;
+  }
+}
+
+@media (max-width: 818px) {
+  .app-title {
+    width: 30%;
+  }
+}
+
+@media (max-width: 690px) {
+  .developedBy {
+    display: none !important;
+  }
+
+  select {
+    font-size: 14px !important;
+  }
+}
+
+@media (max-width: 619px) {
+  .header {
+    height: 60px;
+  }
+
+  .app-title {
+    width: 35%;
+    font-size: 0.9rem !important;
+  }
+}
+
+@media (max-width: 450px) {
+  .header {
+    height: 60px;
+  }
+
+  .app-title {
+    width: 40% !important;
+    font-size: 0.75rem !important;
+  }
+
+  select {
+    font-size: 12px !important;
+  }
+}
