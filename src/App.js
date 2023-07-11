@@ -11,8 +11,8 @@ import { populateTabData } from "./store/actions";
 
 function App() {
   const dispatch = useDispatch();
-  const currentHamburgerIconState = useSelector(
-    (state) => state.currentHamburgerIconState
+  const isHamburgerIconVisible = useSelector(
+    (state) => state.isHamburgerIconVisible
   );
 
   useEffect(() => {
@@ -27,14 +27,14 @@ function App() {
         </div>
         <div className="content-layout">
           <div
-            className={`sidebar ${currentHamburgerIconState ? "hidden" : ""}
+            className={`sidebar ${isHamburgerIconVisible ? "hidden" : ""}
             `}
           >
             <Sidebar />
           </div>
           <div
             className={`mainlayout ${
-              currentHamburgerIconState ? "expanded" : ""
+              isHamburgerIconVisible ? "expanded" : ""
             }`}
           >
             <MainLayout />

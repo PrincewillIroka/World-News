@@ -9,7 +9,7 @@ const initialState = {
   url: "sources",
   api_key: process.env.REACT_APP_API_KEY,
   proxy_url: process.env.REACT_APP_PROXY_URL,
-  currentHamburgerIconState: false,
+  isHamburgerIconVisible: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -60,10 +60,10 @@ const reducer = (state = initialState, action) => {
         url: action.payload,
       };
     }
-    case Actions.TOGGLE_HAMBURGER_ICON_STATE: {
+    case Actions.TOGGLE_HAMBURGER_ICON_VISIBILITY: {
       return {
         ...state,
-        currentHamburgerIconState: action.payload,
+        isHamburgerIconVisible: action.payload,
       };
     }
     default: {

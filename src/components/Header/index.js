@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import db from "../../assets/db/data.json";
 import {
-  handleHamburgerIconState,
+  toggleHamburgerIconVisibility,
   populateTabData,
   changeUrl,
   handleNewsSource,
@@ -15,10 +15,10 @@ import "./Header.css";
 function Header() {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
-  const { url, proxy_url, api_key, newsSource } = state;
+  const { url, proxy_url, api_key, newsSource, isHamburgerIconVisible } = state;
 
   function handleHamburgerIconClick() {
-    dispatch(handleHamburgerIconState(!state.currentHamburgerIconState));
+    dispatch(toggleHamburgerIconVisibility(!isHamburgerIconVisible));
   }
 
   const handleSelectChange = async (event) => {

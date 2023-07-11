@@ -5,11 +5,11 @@ export const POPULATE_TAB_DATA = "POPULATE_TAB_DATA";
 export const SEARCH_TAB_DATA = "SEARCH_TAB_DATA";
 export const RESET_TAB_DATA = "RESET_TAB_DATA";
 export const CHANGE_URL = "CHANGE_URL";
-export const TOGGLE_HAMBURGER_ICON_STATE = "TOGGLE_HAMBURGER_ICON_STATE";
+export const TOGGLE_HAMBURGER_ICON_VISIBILITY = "TOGGLE_HAMBURGER_ICON_VISIBILITY";
 
-export const handleHamburgerIconState = (currentHamburgerIconState) => ({
-  type: TOGGLE_HAMBURGER_ICON_STATE,
-  payload: currentHamburgerIconState,
+export const toggleHamburgerIconVisibility = (isHamburgerIconVisible) => ({
+  type: TOGGLE_HAMBURGER_ICON_VISIBILITY,
+  payload: isHamburgerIconVisible,
 });
 
 export const handleNewsSource = (newsSource) => ({
