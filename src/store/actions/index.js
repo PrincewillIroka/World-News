@@ -1,47 +1,47 @@
-export const CHANGENEWSSOURCE = "CHANGENEWSSOURCE";
-export const CHANGEISLOADING = "CHANGEISLOADING";
-export const CHANGEACTIVENEWSSOURCE = "CHANGEACTIVENEWSSOURCE";
-export const POPULATETABDATA = "POPULATETABDATA";
-export const SEARCHTABDATA = "SEARCHTABDATA";
-export const RESETTABDATA = "RESETTABDATA";
-export const CHANGEURL = "CHANGEURL";
-export const TOGGLEHAMBURGERICONSTATE = "TOGGLEHAMBURGERICONSTATE";
+export const CHANGE_NEWS_SOURCE = "CHANGE_NEWS_SOURCE";
+export const CHANGE_IS_LOADING = "CHANGE_IS_LOADING";
+export const CHANGE_ACTIVE_NEWS_SOURCE = "CHANGE_ACTIVE_NEWS_SOURCE";
+export const POPULATE_TAB_DATA = "POPULATE_TAB_DATA";
+export const SEARCH_TAB_DATA = "SEARCH_TAB_DATA";
+export const RESET_TAB_DATA = "RESET_TAB_DATA";
+export const CHANGE_URL = "CHANGE_URL";
+export const TOGGLE_HAMBURGER_ICON_STATE = "TOGGLE_HAMBURGER_ICON_STATE";
 
 export const handleHamburgerIconState = (currentHamburgerIconState) => ({
-  type: TOGGLEHAMBURGERICONSTATE,
+  type: TOGGLE_HAMBURGER_ICON_STATE,
   payload: currentHamburgerIconState,
 });
 
 export const handleNewsSource = (newsSource) => ({
-  type: CHANGENEWSSOURCE,
+  type: CHANGE_NEWS_SOURCE,
   payload: newsSource,
 });
 
 export const handleIsLoading = (isLoading) => ({
-  type: CHANGEISLOADING,
+  type: CHANGE_IS_LOADING,
   payload: isLoading,
 });
 
 export const handleActiveNewsSource = (activeNewsSource) => ({
-  type: CHANGEACTIVENEWSSOURCE,
+  type: CHANGE_ACTIVE_NEWS_SOURCE,
   payload: activeNewsSource,
 });
 
 export const populateTabData = (data) => ({
-  type: POPULATETABDATA,
+  type: POPULATE_TAB_DATA,
   payload: data,
 });
 
 export const searchTabData = (value) => ({
-  type: SEARCHTABDATA,
+  type: SEARCH_TAB_DATA,
   payload: value,
 });
 
 export const resetTabData = () => ({
-  type: RESETTABDATA,
+  type: RESET_TAB_DATA,
 });
 
 export const changeUrl = (url) => ({
-  type: CHANGEURL,
+  type: CHANGE_URL,
   payload: url,
 });

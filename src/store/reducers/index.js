@@ -14,32 +14,32 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case Actions.CHANGENEWSSOURCE: {
+    case Actions.CHANGE_NEWS_SOURCE: {
       return {
         ...state,
         newsSource: action.payload,
       };
     }
-    case Actions.CHANGEISLOADING: {
+    case Actions.CHANGE_IS_LOADING: {
       return {
         ...state,
         isLoading: action.payload,
       };
     }
-    case Actions.CHANGEACTIVENEWSSOURCE: {
+    case Actions.CHANGE_ACTIVE_NEWS_SOURCE: {
       return {
         ...state,
         activeNewsSource: action.payload,
       };
     }
-    case Actions.POPULATETABDATA: {
+    case Actions.POPULATE_TAB_DATA: {
       return {
         ...state,
         tabData: action.payload,
         tabDataClone: action.payload,
       };
     }
-    case Actions.SEARCHTABDATA: {
+    case Actions.SEARCH_TAB_DATA: {
       const newTabData = state.tabDataClone.filter((tdc) =>
         tdc.title.toLowerCase().startsWith(action.payload)
       );
@@ -48,19 +48,19 @@ const reducer = (state = initialState, action) => {
         tabData: newTabData,
       };
     }
-    case Actions.RESETTABDATA: {
+    case Actions.RESET_TAB_DATA: {
       return {
         ...state,
         tabData: state.tabDataClone,
       };
     }
-    case Actions.CHANGEURL: {
+    case Actions.CHANGE_URL: {
       return {
         ...state,
         url: action.payload,
       };
     }
-    case Actions.TOGGLEHAMBURGERICONSTATE: {
+    case Actions.TOGGLE_HAMBURGER_ICON_STATE: {
       return {
         ...state,
         currentHamburgerIconState: action.payload,
