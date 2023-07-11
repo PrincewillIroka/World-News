@@ -12,7 +12,7 @@ https://worldnewsapp.netlify.com/
 
 ### App User Interface
 
-![Home Screen](https://imgur.com/jwN8QXu.png)
+![Home Screen](https://i.imgur.com/EA92YOC.png)
 
 ### Usage and Setup
 - Clone this repo. Go into the root folder and run *yarn* to install the dependencies.

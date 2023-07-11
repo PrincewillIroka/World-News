@@ -54,7 +54,7 @@
       }
 
       > .s-more {
-        color: blue;
+        color: #0e88c9;
         margin: 10px 0 0 0;
         cursor: default;
       }
@@ -84,4 +84,20 @@
 }
 
 @media (max-width: 460px) {
+}
+
+.fa-twitter {
+  color: #1da1f2;
+}
+
+.fa-facebook-f {
+  color: #0165e1;
+}
+
+.fa-linkedin {
+  color: #0a66c2;
+}
+
+.fa-reddit {
+  color: #ff4500;
 }
