@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import db from "./assets/db/data.json";
 import "./App.css";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import MainLayout from "./components/MainLayout";
 import styled from "styled-components";
-import "@fortawesome/fontawesome-free/css/all.min.css";
 import { populateTabData } from "./store/actions";
 
 function App() {
